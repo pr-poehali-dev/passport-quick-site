@@ -13,7 +13,7 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 
 const HERO_IMG =
-  'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/files/ddfcaf81-2b8a-4d1d-84df-94c05d1cb1c4.jpg';
+  'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/bucket/c35cfb78-a28e-41a4-902e-ec211620b0c3.jpg';
 
 const services = [
   {
