@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
+import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/contacts';
 
 const nav = [
-  { label: 'Услуги', href: '/#services' },
   { label: 'Цены', href: '/#prices' },
+  { label: 'Без прописки в Москве', href: '/zagranpasport-bez-propiski-moskva' },
   { label: 'Дети до 14 лет', href: '/deti-do-14-let' },
   { label: 'Документы', href: '/#docs' },
-  { label: 'Как мы работаем', href: '/#process' },
+  { label: 'Статьи', href: '/#articles' },
   { label: 'Контакты', href: '/#contacts' },
 ];
 
@@ -23,7 +24,7 @@ const SiteHeader = () => {
           </div>
           <span className="font-display text-xl font-bold text-primary">ПаспортСервис</span>
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-6 xl:flex">
           {nav.map((n) => (
             <a
               key={n.href}
@@ -34,17 +35,20 @@ const SiteHeader = () => {
             </a>
           ))}
         </nav>
-        <div className="hidden items-center gap-4 lg:flex">
-          <a href="tel:+74950000000" className="font-display text-lg font-semibold text-primary">
-            +7 (495) 000-00-00
+        <div className="hidden items-center gap-4 xl:flex">
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="font-display text-lg font-semibold text-primary"
+          >
+            {PHONE_DISPLAY}
           </a>
         </div>
-        <button className="lg:hidden" onClick={() => setMenu(!menu)} aria-label="Меню">
+        <button className="xl:hidden" onClick={() => setMenu(!menu)} aria-label="Меню">
           <Icon name={menu ? 'X' : 'Menu'} size={26} className="text-primary" />
         </button>
       </div>
       {menu && (
-        <nav className="border-t border-border bg-background px-4 py-4 lg:hidden">
+        <nav className="border-t border-border bg-background px-4 py-4 xl:hidden">
           {nav.map((n) => (
             <a
               key={n.href}
@@ -55,8 +59,8 @@ const SiteHeader = () => {
               {n.label}
             </a>
           ))}
-          <a href="tel:+74950000000" className="mt-2 block font-semibold text-primary">
-            +7 (495) 000-00-00
+          <a href={`tel:${PHONE_TEL}`} className="mt-2 block font-semibold text-primary">
+            {PHONE_DISPLAY}
           </a>
         </nav>
       )}

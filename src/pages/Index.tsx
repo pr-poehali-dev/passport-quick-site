@@ -11,6 +11,7 @@ import PriceTable from '@/components/PriceTable';
 import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
+import { articles } from '@/data/articles';
 
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/bucket/c35cfb78-a28e-41a4-902e-ec211620b0c3.jpg';
@@ -372,8 +373,56 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Articles */}
+      <section id="articles" className="py-16 md:py-24">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Статьи</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Полезное о загранпаспорте ребёнку
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Разбираем документы, сроки и выбор паспорта для детей до 14 лет.
+            </p>
+          </header>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {articles.map((a) => (
+              <Link
+                key={a.slug}
+                to={`/articles/${a.slug}`}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-accent/40 hover:shadow-lg"
+              >
+                <img
+                  src={a.cover}
+                  alt={a.title}
+                  className="h-44 w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1">
+                      <Icon name="Calendar" size={13} /> {a.date}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Icon name="Clock" size={13} /> {a.readTime}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 font-display text-lg font-semibold text-primary transition-colors group-hover:text-accent">
+                    {a.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{a.excerpt}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
+                    Читать статью <Icon name="ArrowRight" size={15} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section id="faq" className="py-16 md:py-24">
+      <section id="faq" className="py-16 md:py-24 bg-secondary">
         <div className="container max-w-3xl">
           <header className="text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Вопросы и ответы</p>

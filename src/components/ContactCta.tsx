@@ -1,68 +1,47 @@
 import Icon from '@/components/ui/icon';
-import { Button } from '@/components/ui/button';
-
-const contacts = [
-  { icon: 'Phone', label: '+7 (495) 000-00-00', sub: 'Ежедневно 9:00–21:00' },
-  { icon: 'Mail', label: 'info@passportservice.ru', sub: 'Ответим в течение часа' },
-  { icon: 'MapPin', label: 'Москва, ул. Тверская, 1', sub: 'Офис в центре города' },
-];
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
 
 const ContactCta = () => {
   return (
     <section id="contacts" className="bg-primary py-16 text-primary-foreground md:py-24">
-      <div className="container grid gap-10 lg:grid-cols-2 lg:items-center">
-        <div>
-          <h2 className="font-display text-3xl font-bold md:text-4xl">
-            Нужна помощь с загранпаспортом?
-          </h2>
-          <p className="mt-4 max-w-md text-primary-foreground/75">
-            Оставьте заявку на предварительную запись — специалист свяжется, назовёт точный срок и
-            стоимость. Оплата в офисе наличными.
-          </p>
-          <div className="mt-8 space-y-4">
-            {contacts.map((c) => (
-              <div key={c.label} className="flex items-center gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-                  <Icon name={c.icon} size={20} className="text-accent" />
-                </div>
-                <div>
-                  <p className="font-semibold">{c.label}</p>
-                  <p className="text-sm text-primary-foreground/60">{c.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="container max-w-3xl text-center">
+        <h2 className="font-display text-3xl font-bold md:text-4xl">
+          Нужна помощь с загранпаспортом?
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-primary-foreground/75">
+          Напишите нам в мессенджер — специалист ответит, назовёт точный срок и стоимость,
+          запишет на приём. Отвечаем быстро.
+        </p>
+
+        <div className="mx-auto mt-8 flex max-w-md flex-col gap-4 sm:flex-row">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-6 py-4 font-display text-lg font-semibold text-white transition-transform hover:scale-[1.03]"
+          >
+            <Icon name="MessageCircle" size={24} />
+            WhatsApp
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-3 rounded-2xl bg-[#229ED9] px-6 py-4 font-display text-lg font-semibold text-white transition-transform hover:scale-[1.03]"
+          >
+            <Icon name="Send" size={24} />
+            Telegram
+          </a>
         </div>
-        <form className="rounded-2xl bg-white p-7 text-foreground">
-          <h3 className="font-display text-xl font-semibold text-primary">Оставить заявку</h3>
-          <div className="mt-5 space-y-4">
-            <input
-              type="text"
-              placeholder="Ваше имя"
-              className="w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-            />
-            <input
-              type="tel"
-              placeholder="Телефон"
-              className="w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-            />
-            <textarea
-              placeholder="Комментарий (необязательно)"
-              rows={3}
-              className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-            />
-            <Button
-              type="button"
-              size="lg"
-              className="w-full bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
-            >
-              Отправить заявку
-            </Button>
-            <p className="text-center text-xs text-muted-foreground">
-              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-            </p>
-          </div>
-        </form>
+
+        <a
+          href={`tel:${PHONE_TEL}`}
+          className="mt-6 inline-flex items-center gap-2 font-display text-2xl font-bold text-accent"
+        >
+          <Icon name="Phone" size={22} />
+          {PHONE_DISPLAY}
+        </a>
+        <p className="mt-2 text-sm text-primary-foreground/60">Ежедневно 9:00–21:00</p>
       </div>
     </section>
   );
