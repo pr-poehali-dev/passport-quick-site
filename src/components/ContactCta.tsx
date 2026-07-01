@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
 
@@ -42,6 +43,13 @@ const ContactCta = () => {
           {PHONE_DISPLAY}
         </a>
         <p className="mt-2 text-sm text-primary-foreground/60">Ежедневно 9:00–21:00</p>
+        <p className="mx-auto mt-6 max-w-md text-xs text-primary-foreground/50">
+          Обращаясь к нам, вы соглашаетесь с{' '}
+          <Link to="/privacy" className="underline underline-offset-2 hover:text-accent">
+            политикой конфиденциальности
+          </Link>{' '}
+          и обработкой персональных данных.
+        </p>
       </div>
     </section>
   );

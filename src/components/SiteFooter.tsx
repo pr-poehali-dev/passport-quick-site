@@ -60,8 +60,11 @@ const SiteFooter = () => {
       </div>
 
       <div className="border-t border-border py-6">
-        <div className="container text-center text-sm text-muted-foreground">
-          © 2026 ПаспортСервис. Помощь в оформлении загранпаспортов.
+        <div className="container flex flex-col items-center justify-between gap-3 text-center text-sm text-muted-foreground sm:flex-row sm:text-left">
+          <span>© 2026 ПаспортСервис. Помощь в оформлении загранпаспортов.</span>
+          <Link to="/privacy" className="transition-colors hover:text-accent">
+            Политика конфиденциальности
+          </Link>
         </div>
       </div>
     </footer>
