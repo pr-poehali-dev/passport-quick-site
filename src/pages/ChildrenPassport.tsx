@@ -13,6 +13,7 @@ import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
+import RelatedPromo from '@/components/RelatedPromo';
 
 const PAGE_URL = 'https://паспортсервис.рф/deti-do-14-let';
 const PAGE_TITLE =
@@ -361,6 +362,7 @@ const ChildrenPassport = () => {
         ]}
       />
 
+      <RelatedPromo current="children" />
       <ContactCta />
       <SiteFooter />
     </div>

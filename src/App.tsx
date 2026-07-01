@@ -11,6 +11,7 @@ import WithoutMilitaryId from "./pages/WithoutMilitaryId";
 import ArticlePage from "./pages/ArticlePage";
 import NotFound from "./pages/NotFound";
 import FloatingMessengers from "@/components/FloatingMessengers";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/deti-do-14-let" element={<ChildrenPassport />} />

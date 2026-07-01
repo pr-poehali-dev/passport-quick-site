@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/contacts';
+import { PROMO_PAGES } from '@/lib/siteLinks';
 
 const nav = [
   { label: 'Цены', href: '/#prices' },
-  { label: 'Дети до 14 лет', href: '/deti-do-14-let' },
-  { label: 'Без прописки в Москве', href: '/zagranpasport-bez-propiski-moskva' },
-  { label: 'Без военного билета', href: '/zagranpasport-bez-voennogo-bileta' },
+  { label: PROMO_PAGES.children.navLabel, href: PROMO_PAGES.children.path },
+  { label: PROMO_PAGES.noRegistration.navLabel, href: PROMO_PAGES.noRegistration.path },
+  { label: PROMO_PAGES.noMilitaryId.navLabel, href: PROMO_PAGES.noMilitaryId.path },
   { label: 'Статьи', href: '/#articles' },
   { label: 'Контакты', href: '/#contacts' },
 ];

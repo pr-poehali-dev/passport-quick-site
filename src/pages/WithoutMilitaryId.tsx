@@ -12,6 +12,7 @@ import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
+import RelatedPromo from '@/components/RelatedPromo';
 import { WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
 
 const PAGE_URL = 'https://паспортсервис.рф/zagranpasport-bez-voennogo-bileta';
@@ -301,6 +302,7 @@ const WithoutMilitaryId = () => {
         ]}
       />
 
+      <RelatedPromo current="noMilitaryId" />
       <ContactCta />
       <SiteFooter />
     </div>

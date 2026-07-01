@@ -7,6 +7,7 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import { getArticle, articles } from '@/data/articles';
+import { PROMO_PAGES } from '@/lib/siteLinks';
 
 const ArticlePage = () => {
   const { slug } = useParams();
@@ -40,6 +41,7 @@ const ArticlePage = () => {
   const others = articles.filter((a) => a.slug !== article.slug).slice(0, 2);
 
   const articleUrl = `https://паспортсервис.рф/articles/${article.slug}`;
+  const promo = PROMO_PAGES[article.relatedPromo];
 
   return (
     <div className="min-h-screen bg-background">
@@ -107,14 +109,12 @@ const ArticlePage = () => {
           </div>
 
           <div className="mt-10 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6 text-center">
-            <p className="font-display text-lg font-semibold text-primary">
-              Нужен загранпаспорт ребёнку до 14 лет?
-            </p>
+            <p className="font-display text-lg font-semibold text-primary">{promo.cardTitle}?</p>
             <p className="mx-auto mt-2 max-w-xl text-sm text-foreground/80">
-              Поможем оформить быстро и без ошибок — цены, сроки и документы на отдельной странице.
+              {promo.cardDesc} Поможем оформить быстро и без ошибок.
             </p>
             <Button asChild className="mt-4 bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/deti-do-14-let">Загранпаспорт детям до 14 лет</Link>
+              <Link to={promo.path}>{promo.cardTitle}</Link>
             </Button>
           </div>
         </div>
