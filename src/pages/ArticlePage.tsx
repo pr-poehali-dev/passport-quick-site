@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
+import JsonLd from '@/components/JsonLd';
 import { getArticle, articles } from '@/data/articles';
 
 const ArticlePage = () => {
@@ -38,9 +39,35 @@ const ArticlePage = () => {
 
   const others = articles.filter((a) => a.slug !== article.slug).slice(0, 2);
 
+  const articleUrl = `https://паспортсервис.рф/articles/${article.slug}`;
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
+
+      <JsonLd
+        data={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: article.title,
+            description: article.metaDescription,
+            image: article.cover,
+            author: { '@type': 'Organization', name: 'ПаспортСервис' },
+            publisher: { '@type': 'Organization', name: 'ПаспортСервис' },
+            mainEntityOfPage: articleUrl,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://паспортсервис.рф/' },
+              { '@type': 'ListItem', position: 2, name: 'Статьи', item: 'https://паспортсервис.рф/#articles' },
+              { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
+            ],
+          },
+        ]}
+      />
 
       <nav aria-label="Хлебные крошки" className="border-b border-border bg-secondary/50">
         <div className="container flex flex-wrap items-center gap-2 py-3 text-sm text-muted-foreground">

@@ -377,12 +377,12 @@ const Index = () => {
       <section id="articles" className="py-16 md:py-24">
         <div className="container">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Статьи</p>
+            <p className="font-semibold uppercase tracking-widest text-accent">Полезная информация</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Полезное о загранпаспорте ребёнку
+              Полезная информация о загранпаспортах
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Разбираем документы, сроки и выбор паспорта для детей до 14 лет.
+              Разбираем документы, сроки, стоимость и нюансы оформления для взрослых и детей.
             </p>
           </header>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -390,31 +390,26 @@ const Index = () => {
               <Link
                 key={a.slug}
                 to={`/articles/${a.slug}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-accent/40 hover:shadow-lg"
+                className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:border-accent/40 hover:shadow-lg"
               >
-                <img
-                  src={a.cover}
-                  alt={a.title}
-                  className="h-44 w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center gap-1">
-                      <Icon name="Calendar" size={13} /> {a.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Icon name="Clock" size={13} /> {a.readTime}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-primary transition-colors group-hover:text-accent">
-                    {a.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{a.excerpt}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
-                    Читать статью <Icon name="ArrowRight" size={15} />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <Icon name={a.icon} size={28} />
+                </div>
+                <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1">
+                    <Icon name="Calendar" size={13} /> {a.date}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Icon name="Clock" size={13} /> {a.readTime}
                   </span>
                 </div>
+                <h3 className="mt-3 font-display text-lg font-semibold text-primary transition-colors group-hover:text-accent">
+                  {a.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{a.excerpt}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
+                  Читать статью <Icon name="ArrowRight" size={15} />
+                </span>
               </Link>
             ))}
           </div>

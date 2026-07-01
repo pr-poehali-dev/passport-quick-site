@@ -11,6 +11,7 @@ export type Article = {
   date: string;
   readTime: string;
   cover: string;
+  icon: string;
   content: ReactNode;
 };
 
@@ -41,6 +42,7 @@ export const articles: Article[] = [
     date: '20 июня 2026',
     readTime: '5 мин',
     cover: COVER_BIO,
+    icon: 'FileText',
     content: (
       <>
         <p>
@@ -91,6 +93,7 @@ export const articles: Article[] = [
     date: '14 июня 2026',
     readTime: '4 мин',
     cover: COVER_BIO,
+    icon: 'GitCompare',
     content: (
       <>
         <p>
@@ -133,6 +136,7 @@ export const articles: Article[] = [
     date: '6 июня 2026',
     readTime: '4 мин',
     cover: COVER_BIO,
+    icon: 'Clock',
     content: (
       <>
         <p>
