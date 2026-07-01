@@ -15,115 +15,111 @@ const HERO_IMG =
 const nav = [
   { label: 'Услуги', href: '#services' },
   { label: 'Калькулятор', href: '#calc' },
+  { label: 'Документы', href: '#docs' },
   { label: 'Процесс', href: '#process' },
   { label: 'Вопросы', href: '#faq' },
-  { label: 'Блог', href: '#blog' },
   { label: 'Контакты', href: '#contacts' },
 ];
 
 const services = [
   {
-    icon: 'BookUser',
-    title: 'Загранпаспорт нового образца',
-    desc: 'Биометрический паспорт на 10 лет. Оформление за 1–7 дней без личного посещения ведомств.',
-    price: 'от 5 000 ₽',
+    icon: 'Rocket',
+    title: 'Взрослые и дети 14+ · ФГУП ПВС + МВД',
+    desc: 'Самое быстрое оформление — от 4 рабочих дней. Госпошлина 6000 ₽ уже включена в стоимость.',
+    price: 'от 65 500 ₽',
   },
   {
-    icon: 'FileText',
-    title: 'Паспорт старого образца',
-    desc: 'Паспорт на 5 лет. Самый быстрый вариант — готовность за 1 день в срочном режиме.',
-    price: 'от 4 500 ₽',
+    icon: 'BookUser',
+    title: 'Взрослые и дети 14+ · через МВД',
+    desc: 'Оптимальный вариант по цене — от 12 до 24 рабочих дней. Госпошлина 6000 ₽ включена.',
+    price: 'от 26 000 ₽',
   },
   {
     icon: 'Baby',
-    title: 'Детский загранпаспорт',
-    desc: 'Оформление документов для детей до 14 и от 14 до 18 лет. Полное сопровождение.',
-    price: 'от 4 000 ₽',
+    title: 'Дети до 14 лет · биометрия (10 лет)',
+    desc: 'Биометрический паспорт на 10 лет — от 2 рабочих дней. Госпошлина 3000 ₽ оплачивается в МВД.',
+    price: 'от 23 000 ₽',
   },
   {
-    icon: 'RefreshCw',
-    title: 'Замена и продление',
-    desc: 'Замена по истечении срока, смене фамилии или окончании страниц. Быстро и без ошибок.',
-    price: 'от 4 500 ₽',
-  },
-  {
-    icon: 'AlertCircle',
-    title: 'Восстановление',
-    desc: 'Восстановление при утере или порче паспорта. Поможем собрать пакет документов.',
-    price: 'от 5 500 ₽',
-  },
-  {
-    icon: 'Users',
-    title: 'Оформление для группы',
-    desc: 'Специальные условия для семей и корпоративных клиентов. Индивидуальный расчёт.',
-    price: 'по запросу',
+    icon: 'FileText',
+    title: 'Дети до 14 лет · старый образец (5 лет)',
+    desc: 'Паспорт на 5 лет — экспресс-оформление от 2–3 часов. Госпошлина 1000 ₽ оплачивается в МВД.',
+    price: 'от 20 000 ₽',
   },
 ];
 
 const steps = [
   {
     n: '01',
-    title: 'Заявка и расчёт',
-    desc: 'Вы оставляете заявку или считаете стоимость в калькуляторе. Специалист связывается за 15 минут.',
+    title: 'Предварительная запись',
+    desc: 'Записываем вас в офис. Оформляем полный пакет документов и заключаем договор.',
   },
   {
     n: '02',
-    title: 'Сбор документов',
-    desc: 'Подсказываем полный список и проверяем каждый документ, чтобы избежать отказа.',
+    title: 'Договор и оплата',
+    desc: '100% предоплата наличными. Записываем вас в МВД за 1 день или на удобную дату.',
   },
   {
     n: '03',
-    title: 'Подача без очередей',
-    desc: 'Записываем на удобное время и сопровождаем при подаче. Никаких стояний в очередях.',
+    title: 'Подача в МВД',
+    desc: 'В назначенный день вы подаёте документы. Отсчёт рабочих дней идёт со следующего дня после подачи.',
   },
   {
     n: '04',
     title: 'Готовый паспорт',
-    desc: 'Уведомляем о готовности. Забираете паспорт в согласованный срок — от 1 дня.',
+    desc: 'По истечении срока сообщаем о готовности. Паспорт получаете в том же МВД, где была подача.',
   },
+];
+
+const docsChild = [
+  'Паспорт РФ одного из родителей',
+  'Свидетельство о рождении ребёнка (перевод с нотариальным заверением, если выдано другой страной)',
+  'Штамп о гражданстве (даже если ребёнок родился в РФ и родители — граждане РФ)',
+  'Паспорт РФ ребёнка (детям от 14 до 18 лет)',
+  'Загранпаспорт ребёнка (если действующий)',
+  'Свидетельство о перемене имени (если меняли ФИО)',
+  'Свидетельство о регистрации ребёнка (прописка)',
+  'Фото 4 шт. 3,5×4,5 матовые на белом фоне без овала',
+];
+
+const docsAdult = [
+  'Паспорт РФ',
+  'Загранпаспорт (если действующий)',
+  'Данные трудовой и учебной деятельности за последние 10 лет',
+  'Свидетельство о регистрации ИП (если являетесь)',
+  'Свидетельство о браке / перемене имени (если меняли ФИО)',
+  'Военный билет (для мужчин призывного возраста 18–30 лет)',
+  'Решение суда (если была судимость)',
+  'Фото 4 шт. 3,5×4,5 матовые на белом фоне без овала',
+];
+
+const timeFactors = [
+  'Смена или наличие второго гражданства (сообщите при оформлении)',
+  'Форма допуска к секретным сведениям (укажите форму, год, организацию)',
+  'Неоплаченные штрафы и долги у судебных приставов',
+  'Судимость',
 ];
 
 const faq = [
   {
-    q: 'За сколько дней реально сделать загранпаспорт срочно?',
-    a: 'В экспресс-режиме паспорт старого образца можно оформить за 1 день, нового образца — за 3–7 дней. Точный срок зависит от типа паспорта и загруженности ведомств, мы называем его сразу при расчёте.',
+    q: 'От чего зависит срок оформления загранпаспорта?',
+    a: 'Отсчёт рабочих дней всегда идёт со следующего дня после подачи документов в МВД. Быстрее всего — через ФГУП ПВС + МВД (от 4 рабочих дней). Дольше, но дешевле — напрямую через МВД (от 12 дней).',
   },
   {
-    q: 'Какие документы нужны для срочного оформления?',
-    a: 'Базовый пакет: паспорт РФ, старый загранпаспорт (при наличии), фотографии и заявление. Полный список зависит от вашей ситуации — специалист подготовит его индивидуально после заявки.',
+    q: 'Что может повлиять на сроки оформления?',
+    a: 'На сроки влияют: судимость, форма допуска к секретным сведениям, неоплаченные штрафы и долги у судебных приставов, а также смена или наличие второго гражданства за последние 10 лет. Обязательно сообщите нам об этом при оформлении.',
   },
   {
-    q: 'Это законно? Вы не подделываете документы?',
-    a: 'Абсолютно законно. Мы не изготавливаем документы и не влияем на решения госорганов. Наша работа — правильно подготовить пакет документов, ускорить запись и сопроводить процесс, экономя ваше время.',
+    q: 'Входит ли госпошлина в стоимость?',
+    a: 'Для взрослых и детей 14+ госпошлина 6000 ₽ включена в стоимость. Для детей до 14 лет госпошлина (3000 ₽ за биометрию или 1000 ₽ за старый образец) оплачивается отдельно в МВД.',
   },
   {
-    q: 'Что если в оформлении откажут?',
-    a: 'Мы даём гарантию результата. Если по нашей вине оформление не состоится, возвращаем стоимость услуги. Именно поэтому мы тщательно проверяем документы на старте.',
+    q: 'Как проходит оплата?',
+    a: 'В офисе мы оформляем полный пакет документов, заключаем договор, и вы вносите 100% предоплату наличными. После этого записываем вас в МВД на удобную дату.',
   },
   {
-    q: 'Можно ли оформить паспорт ребёнку?',
-    a: 'Да, мы оформляем загранпаспорта детям любого возраста — до 14 лет и от 14 до 18 лет. Для этого потребуется присутствие законного представителя.',
-  },
-];
-
-const blog = [
-  {
-    tag: 'Инструкция',
-    title: 'Новый или старый образец загранпаспорта: что выбрать в 2026 году',
-    desc: 'Сравниваем срок действия, стоимость и скорость оформления двух типов паспортов.',
-    date: '28 июня 2026',
-  },
-  {
-    tag: 'Документы',
-    title: 'Полный список документов для загранпаспорта',
-    desc: 'Разбираем, что нужно взрослому, ребёнку и при замене по разным причинам.',
-    date: '15 июня 2026',
-  },
-  {
-    tag: 'Лайфхак',
-    title: 'Как оформить загранпаспорт без очередей и нервов',
-    desc: 'Рабочие способы сэкономить время при подаче документов в 2026 году.',
-    date: '2 июня 2026',
+    q: 'Где я получу готовый паспорт?',
+    a: 'Паспорт вы получаете в том же отделении МВД, где подавали документы. По истечении срока мы заранее сообщаем о готовности.',
   },
 ];
 
@@ -186,14 +182,14 @@ const Index = () => {
         <div className="container relative grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
-              <Icon name="Zap" size={16} /> Срочно — от 1 дня
+              <Icon name="Zap" size={16} /> Срочно — от 2 часов
             </span>
             <h1 className="mt-5 font-display text-4xl font-bold leading-tight md:text-6xl">
               Срочное оформление загранпаспорта
             </h1>
             <p className="mt-5 max-w-lg text-lg text-primary-foreground/75">
-              Оформим загранпаспорт нового и старого образца за 1–3 дня. Без очередей, с гарантией
-              результата и полным сопровождением специалиста.
+              Оформим загранпаспорт для взрослых и детей — от 4 рабочих дней через ФГУП ПВС.
+              Госпошлина включена, без очередей, с гарантией результата и полным сопровождением.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button
@@ -214,8 +210,8 @@ const Index = () => {
             </div>
             <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
               {[
-                { v: '1 день', l: 'минимальный срок' },
-                { v: '9 000+', l: 'оформлено паспортов' },
+                { v: 'от 4 дней', l: 'минимальный срок' },
+                { v: 'госпошлина', l: 'включена в цену' },
                 { v: '100%', l: 'гарантия результата' },
               ].map((s) => (
                 <div key={s.l}>
@@ -245,11 +241,11 @@ const Index = () => {
               Оформляем любые загранпаспорта
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Полный спектр услуг по оформлению документов для выезда за границу — быстро, законно и с
-              гарантией.
+              Выберите категорию и способ оформления. Точную стоимость и срок рассчитайте в
+              калькуляторе ниже.
             </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {services.map((s) => (
               <article
                 key={s.title}
@@ -335,36 +331,81 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Blog */}
-      <section id="blog" className="py-16 md:py-24">
+      {/* Documents */}
+      <section id="docs" className="py-16 md:py-24">
         <div className="container">
-          <header className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="font-semibold uppercase tracking-widest text-accent">Блог и статьи</p>
-              <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-                Полезное о загранпаспортах
-              </h2>
-            </div>
-            <Button variant="outline" className="border-primary/20 text-primary">
-              Все статьи
-            </Button>
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Документы</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Что нужно для оформления
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Полный список документов. Специалист проверит каждый и подскажет, если чего-то не
+              хватает.
+            </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {blog.map((b) => (
-              <article
-                key={b.title}
-                className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/40 hover:shadow-lg"
-              >
-                <span className="w-fit rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-                  {b.tag}
-                </span>
-                <h3 className="mt-4 font-display text-xl font-semibold text-primary transition-colors group-hover:text-accent">
-                  {b.title}
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            <article className="rounded-2xl border border-border bg-card p-7">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary">
+                  <Icon name="Baby" size={22} />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-primary">
+                  Детям до 18 лет
                 </h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{b.desc}</p>
-                <p className="mt-4 text-xs text-muted-foreground">{b.date}</p>
-              </article>
-            ))}
+              </div>
+              <ul className="mt-5 space-y-3">
+                {docsChild.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm text-foreground/80">
+                    <Icon name="Check" size={18} className="mt-0.5 shrink-0 text-accent" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </article>
+            <article className="rounded-2xl border border-border bg-card p-7">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary">
+                  <Icon name="User" size={22} />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-primary">Взрослым</h3>
+              </div>
+              <ul className="mt-5 space-y-3">
+                {docsAdult.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm text-foreground/80">
+                    <Icon name="Check" size={18} className="mt-0.5 shrink-0 text-accent" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+
+          {/* Time factors */}
+          <div className="mt-8 rounded-2xl border-2 border-accent/40 bg-accent/5 p-7 md:p-9">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                <Icon name="TriangleAlert" size={22} />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-primary">
+                Что влияет на сроки оформления
+              </h3>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Обязательно сообщите нам об этих обстоятельствах при оформлении — они могут увеличить
+              срок изготовления паспорта:
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {timeFactors.map((f) => (
+                <div
+                  key={f}
+                  className="flex items-start gap-3 rounded-xl bg-card p-4 text-sm text-foreground/80"
+                >
+                  <Icon name="AlertCircle" size={18} className="mt-0.5 shrink-0 text-accent" />
+                  {f}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -377,8 +418,8 @@ const Index = () => {
               Готовы оформить загранпаспорт срочно?
             </h2>
             <p className="mt-4 max-w-md text-primary-foreground/75">
-              Оставьте заявку — специалист свяжется в течение 15 минут, назовёт точный срок и
-              стоимость.
+              Оставьте заявку на предварительную запись — специалист свяжется, назовёт точный срок и
+              стоимость. Оплата в офисе наличными.
             </p>
             <div className="mt-8 space-y-4">
               {[
