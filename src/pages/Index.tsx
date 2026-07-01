@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import {
@@ -7,67 +6,74 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import Calculator from '@/components/Calculator';
+import { Link } from 'react-router-dom';
+import PriceTable from '@/components/PriceTable';
+import SiteHeader from '@/components/SiteHeader';
+import ContactCta from '@/components/ContactCta';
+import SiteFooter from '@/components/SiteFooter';
 
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/files/ddfcaf81-2b8a-4d1d-84df-94c05d1cb1c4.jpg';
 
-const nav = [
-  { label: 'Услуги', href: '#services' },
-  { label: 'Калькулятор', href: '#calc' },
-  { label: 'Документы', href: '#docs' },
-  { label: 'Процесс', href: '#process' },
-  { label: 'Вопросы', href: '#faq' },
-  { label: 'Контакты', href: '#contacts' },
-];
-
 const services = [
   {
     icon: 'Rocket',
-    title: 'Взрослые и дети 14+ · ФГУП ПВС + МВД',
-    desc: 'Самое быстрое оформление — от 4 рабочих дней. Госпошлина 6000 ₽ уже включена в стоимость.',
+    title: 'Срочная помощь · от 4 рабочих дней',
+    desc: 'Содействие в срочном оформлении через МФЦ. Госпошлина 6000 ₽ уже включена в стоимость.',
     price: 'от 65 500 ₽',
   },
   {
     icon: 'BookUser',
-    title: 'Взрослые и дети 14+ · через МВД',
+    title: 'Оформление через МФЦ',
     desc: 'Оптимальный вариант по цене — от 12 до 24 рабочих дней. Госпошлина 6000 ₽ включена.',
     price: 'от 26 000 ₽',
   },
   {
     icon: 'Baby',
-    title: 'Дети до 14 лет · биометрия (10 лет)',
-    desc: 'Биометрический паспорт на 10 лет — от 2 рабочих дней. Госпошлина 3000 ₽ оплачивается в МВД.',
-    price: 'от 23 000 ₽',
-  },
-  {
-    icon: 'FileText',
-    title: 'Дети до 14 лет · старый образец (5 лет)',
-    desc: 'Паспорт на 5 лет — экспресс-оформление от 2–3 часов. Госпошлина 1000 ₽ оплачивается в МВД.',
+    title: 'Детям до 14 лет',
+    desc: 'Помощь в оформлении паспорта нового и старого образца. Экспресс-сроки для детей.',
     price: 'от 20 000 ₽',
   },
+  {
+    icon: 'ShieldCheck',
+    title: 'Полное сопровождение',
+    desc: 'Проверяем документы, записываем в МФЦ, сопровождаем до получения готового паспорта.',
+    price: 'под ключ',
+  },
+];
+
+const priceRows = [
+  { term: '4 рабочих дня', price: '100 500 ₽' },
+  { term: '5 рабочих дней', price: '84 500 ₽' },
+  { term: '6 рабочих дней', price: '77 500 ₽' },
+  { term: '7 рабочих дней', price: '72 500 ₽' },
+  { term: '8 рабочих дней', price: '65 500 ₽' },
+  { term: '12 рабочих дней', price: '40 000 ₽' },
+  { term: '13 рабочих дней', price: '31 000 ₽' },
+  { term: '17 рабочих дней', price: '29 000 ₽' },
+  { term: '24 рабочих дня', price: '26 000 ₽' },
 ];
 
 const steps = [
   {
     n: '01',
     title: 'Предварительная запись',
-    desc: 'Записываем вас в офис. Оформляем полный пакет документов и заключаем договор.',
+    desc: 'Записываем вас в офис. Готовим полный пакет документов и заключаем договор.',
   },
   {
     n: '02',
     title: 'Договор и оплата',
-    desc: '100% предоплата наличными. Записываем вас в МВД за 1 день или на удобную дату.',
+    desc: '100% предоплата наличными. Записываем вас в МФЦ за 1 день или на удобную дату.',
   },
   {
     n: '03',
-    title: 'Подача в МВД',
+    title: 'Подача в МФЦ',
     desc: 'В назначенный день вы подаёте документы. Отсчёт рабочих дней идёт со следующего дня после подачи.',
   },
   {
     n: '04',
     title: 'Готовый паспорт',
-    desc: 'По истечении срока сообщаем о готовности. Паспорт получаете в том же МВД, где была подача.',
+    desc: 'По истечении срока сообщаем о готовности. Паспорт получаете там же, где подавали документы.',
   },
 ];
 
@@ -103,7 +109,7 @@ const timeFactors = [
 const faq = [
   {
     q: 'От чего зависит срок оформления загранпаспорта?',
-    a: 'Отсчёт рабочих дней всегда идёт со следующего дня после подачи документов в МВД. Быстрее всего — через ФГУП ПВС + МВД (от 4 рабочих дней). Дольше, но дешевле — напрямую через МВД (от 12 дней).',
+    a: 'Отсчёт рабочих дней всегда идёт со следующего дня после подачи документов в МФЦ. Срочная помощь позволяет получить паспорт от 4 рабочих дней, стандартное оформление — от 12 дней.',
   },
   {
     q: 'Что может повлиять на сроки оформления?',
@@ -111,70 +117,22 @@ const faq = [
   },
   {
     q: 'Входит ли госпошлина в стоимость?',
-    a: 'Для взрослых и детей 14+ госпошлина 6000 ₽ включена в стоимость. Для детей до 14 лет госпошлина (3000 ₽ за биометрию или 1000 ₽ за старый образец) оплачивается отдельно в МВД.',
+    a: 'Для взрослых и детей от 14 лет госпошлина 6000 ₽ включена в стоимость. Для детей до 14 лет госпошлина оплачивается отдельно — подробности на странице для детей до 14 лет.',
   },
   {
     q: 'Как проходит оплата?',
-    a: 'В офисе мы оформляем полный пакет документов, заключаем договор, и вы вносите 100% предоплату наличными. После этого записываем вас в МВД на удобную дату.',
+    a: 'В офисе мы готовим полный пакет документов, заключаем договор, и вы вносите 100% предоплату наличными. После этого записываем вас в МФЦ на удобную дату.',
   },
   {
-    q: 'Где я получу готовый паспорт?',
-    a: 'Паспорт вы получаете в том же отделении МВД, где подавали документы. По истечении срока мы заранее сообщаем о готовности.',
+    q: 'Это законно? Что именно вы делаете?',
+    a: 'Мы оказываем помощь и содействие: консультируем, готовим и проверяем документы, записываем в МФЦ и сопровождаем до получения паспорта. Все документы вы подаёте лично, экономя своё время.',
   },
 ];
 
 const Index = () => {
-  const [menu, setMenu] = useState(false);
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-        <div className="container flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-              <Icon name="Plane" size={20} className="text-accent" />
-            </div>
-            <span className="font-display text-xl font-bold text-primary">ПаспортСервис</span>
-          </a>
-          <nav className="hidden items-center gap-7 lg:flex">
-            {nav.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className="text-sm font-medium text-foreground/70 transition-colors hover:text-accent"
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
-          <div className="hidden items-center gap-4 lg:flex">
-            <a href="tel:+74950000000" className="font-display text-lg font-semibold text-primary">
-              +7 (495) 000-00-00
-            </a>
-          </div>
-          <button className="lg:hidden" onClick={() => setMenu(!menu)} aria-label="Меню">
-            <Icon name={menu ? 'X' : 'Menu'} size={26} className="text-primary" />
-          </button>
-        </div>
-        {menu && (
-          <nav className="border-t border-border bg-background px-4 py-4 lg:hidden">
-            {nav.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setMenu(false)}
-                className="block py-2.5 font-medium text-foreground/80"
-              >
-                {n.label}
-              </a>
-            ))}
-            <a href="tel:+74950000000" className="mt-2 block font-semibold text-primary">
-              +7 (495) 000-00-00
-            </a>
-          </nav>
-        )}
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
@@ -182,14 +140,14 @@ const Index = () => {
         <div className="container relative grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
-              <Icon name="Zap" size={16} /> Срочно — от 2 часов
+              <Icon name="Zap" size={16} /> Срочно — от 4 рабочих дней
             </span>
             <h1 className="mt-5 font-display text-4xl font-bold leading-tight md:text-6xl">
-              Срочное оформление загранпаспорта
+              Помощь в оформлении загранпаспорта
             </h1>
             <p className="mt-5 max-w-lg text-lg text-primary-foreground/75">
-              Оформим загранпаспорт для взрослых и детей — от 4 рабочих дней через ФГУП ПВС.
-              Госпошлина включена, без очередей, с гарантией результата и полным сопровождением.
+              Оказываем содействие в оформлении загранпаспорта через МФЦ для взрослых и детей — от 4
+              рабочих дней. Госпошлина включена, без очередей, с гарантией результата.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button
@@ -197,7 +155,7 @@ const Index = () => {
                 className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
                 asChild
               >
-                <a href="#calc">Рассчитать стоимость</a>
+                <a href="#prices">Смотреть цены</a>
               </Button>
               <Button
                 size="lg"
@@ -224,7 +182,7 @@ const Index = () => {
           <div className="animate-fade-up [animation-delay:150ms]">
             <img
               src={HERO_IMG}
-              alt="Загранпаспорт РФ — срочное оформление"
+              alt="Помощь в оформлении загранпаспорта РФ через МФЦ"
               className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
               loading="eager"
             />
@@ -238,14 +196,13 @@ const Index = () => {
           <header className="mx-auto max-w-2xl text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Услуги</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Оформляем любые загранпаспорта
+              Помогаем с любым загранпаспортом
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Выберите категорию и способ оформления. Точную стоимость и срок рассчитайте в
-              калькуляторе ниже.
+              Оказываем содействие в оформлении для взрослых и детей. Точные цены — в таблице ниже.
             </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <article
                 key={s.title}
@@ -263,71 +220,39 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Calculator */}
-      <section id="calc" className="bg-secondary py-16 md:py-24">
+      {/* Prices */}
+      <section id="prices" className="bg-secondary py-16 md:py-24">
         <div className="container">
           <header className="mx-auto max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Калькулятор</p>
+            <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Рассчитайте стоимость и срок онлайн
+              Прайс для взрослых и детей от 14 лет
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Выберите параметры — и мгновенно узнайте цену и срок оформления загранпаспорта.
+              Госпошлина 6000 ₽ включена в стоимость. Оформление проходит через МФЦ.
             </p>
           </header>
-          <div className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-10">
-            <Calculator />
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section id="process" className="py-16 md:py-24">
-        <div className="container">
-          <header className="mx-auto max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Процесс</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Как проходит оформление
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Всего 4 простых шага от заявки до готового паспорта в ваших руках.
-            </p>
-          </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
-              <div key={s.n} className="relative rounded-2xl bg-secondary p-7">
-                <span className="font-display text-5xl font-bold text-accent/25">{s.n}</span>
-                <h3 className="mt-3 font-display text-lg font-semibold text-primary">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+          <div className="mx-auto mt-12 max-w-3xl">
+            <PriceTable
+              title="Загранпаспорт для взрослых и детей от 14 лет"
+              note="Госпошлина 6000 ₽ включена. Отсчёт рабочих дней — со следующего дня после подачи документов в МФЦ."
+              rows={priceRows}
+              highlightFirst
+            />
+            <div className="mt-6 flex flex-col items-center gap-4 rounded-2xl border border-border bg-card p-6 text-center sm:flex-row sm:justify-between sm:text-left">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon name="Baby" size={22} />
+                </div>
+                <p className="text-sm text-foreground/80">
+                  Оформляете паспорт ребёнку до 14 лет? Для него отдельные цены и сроки.
+                </p>
               </div>
-            ))}
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link to="/deti-do-14-let">Цены для детей до 14 лет</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="bg-secondary py-16 md:py-24">
-        <div className="container max-w-3xl">
-          <header className="text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Вопросы и ответы</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Часто спрашивают
-            </h2>
-          </header>
-          <Accordion type="single" collapsible className="mt-10">
-            {faq.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="mb-3 rounded-xl border border-border bg-card px-5"
-              >
-                <AccordionTrigger className="text-left font-display text-lg font-semibold text-primary hover:no-underline">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </div>
       </section>
 
@@ -350,9 +275,7 @@ const Index = () => {
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary">
                   <Icon name="Baby" size={22} />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-primary">
-                  Детям до 18 лет
-                </h3>
+                <h3 className="font-display text-xl font-semibold text-primary">Детям до 18 лет</h3>
               </div>
               <ul className="mt-5 space-y-3">
                 {docsChild.map((d) => (
@@ -410,78 +333,58 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contacts / CTA */}
-      <section id="contacts" className="bg-primary py-16 text-primary-foreground md:py-24">
-        <div className="container grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h2 className="font-display text-3xl font-bold md:text-4xl">
-              Готовы оформить загранпаспорт срочно?
+      {/* Process */}
+      <section id="process" className="bg-secondary py-16 md:py-24">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Как мы работаем</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Всего 4 простых шага
             </h2>
-            <p className="mt-4 max-w-md text-primary-foreground/75">
-              Оставьте заявку на предварительную запись — специалист свяжется, назовёт точный срок и
-              стоимость. Оплата в офисе наличными.
+            <p className="mt-4 text-muted-foreground">
+              От предварительной записи до готового паспорта в ваших руках.
             </p>
-            <div className="mt-8 space-y-4">
-              {[
-                { icon: 'Phone', label: '+7 (495) 000-00-00', sub: 'Ежедневно 9:00–21:00' },
-                { icon: 'Mail', label: 'info@passportservice.ru', sub: 'Ответим в течение часа' },
-                { icon: 'MapPin', label: 'Москва, ул. Тверская, 1', sub: 'Офис в центре города' },
-              ].map((c) => (
-                <div key={c.label} className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10">
-                    <Icon name={c.icon} size={20} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">{c.label}</p>
-                    <p className="text-sm text-primary-foreground/60">{c.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          </header>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s) => (
+              <div key={s.n} className="relative rounded-2xl bg-card p-7">
+                <span className="font-display text-5xl font-bold text-accent/25">{s.n}</span>
+                <h3 className="mt-3 font-display text-lg font-semibold text-primary">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
           </div>
-          <form className="rounded-2xl bg-white p-7 text-foreground">
-            <h3 className="font-display text-xl font-semibold text-primary">Оставить заявку</h3>
-            <div className="mt-5 space-y-4">
-              <input
-                type="text"
-                placeholder="Ваше имя"
-                className="w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-              />
-              <input
-                type="tel"
-                placeholder="Телефон"
-                className="w-full rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-              />
-              <textarea
-                placeholder="Комментарий (необязательно)"
-                rows={3}
-                className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 outline-none focus:border-accent"
-              />
-              <Button
-                type="button"
-                size="lg"
-                className="w-full bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
-              >
-                Отправить заявку
-              </Button>
-              <p className="text-center text-xs text-muted-foreground">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-              </p>
-            </div>
-          </form>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-background py-10">
-        <div className="container flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-          <div className="flex items-center gap-2">
-            <Icon name="Plane" size={18} className="text-primary" />
-            <span className="font-display font-bold text-primary">ПаспортСервис</span>
-          </div>
-          <p>© 2026 ПаспортСервис. Срочное оформление загранпаспортов.</p>
+      {/* FAQ */}
+      <section id="faq" className="py-16 md:py-24">
+        <div className="container max-w-3xl">
+          <header className="text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Вопросы и ответы</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Часто спрашивают
+            </h2>
+          </header>
+          <Accordion type="single" collapsible className="mt-10">
+            {faq.map((f, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="mb-3 rounded-xl border border-border bg-card px-5"
+              >
+                <AccordionTrigger className="text-left font-display text-lg font-semibold text-primary hover:no-underline">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-      </footer>
+      </section>
+
+      <ContactCta />
+      <SiteFooter />
     </div>
   );
 };
