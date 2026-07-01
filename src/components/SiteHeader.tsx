@@ -5,9 +5,9 @@ import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/contacts';
 
 const nav = [
   { label: 'Цены', href: '/#prices' },
-  { label: 'Без прописки в Москве', href: '/zagranpasport-bez-propiski-moskva' },
   { label: 'Дети до 14 лет', href: '/deti-do-14-let' },
-  { label: 'Документы', href: '/#docs' },
+  { label: 'Без прописки в Москве', href: '/zagranpasport-bez-propiski-moskva' },
+  { label: 'Без военного билета', href: '/zagranpasport-bez-voennogo-bileta' },
   { label: 'Статьи', href: '/#articles' },
   { label: 'Контакты', href: '/#contacts' },
 ];

@@ -282,7 +282,7 @@ const WithoutRegistration = () => {
           </div>
           <div className="mt-6 text-center">
             <Button asChild variant="outline" className="border-primary/20 text-primary">
-              <Link to="/">Все услуги и цены</Link>
+              <Link to="/#prices">Все услуги и цены</Link>
             </Button>
           </div>
         </div>
