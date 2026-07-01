@@ -6,6 +6,7 @@ import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
+import ArticleIllustration from '@/components/ArticleIllustration';
 import { getArticle, articles } from '@/data/articles';
 import { PROMO_PAGES } from '@/lib/siteLinks';
 
@@ -54,7 +55,6 @@ const ArticlePage = () => {
             '@type': 'Article',
             headline: article.title,
             description: article.metaDescription,
-            image: article.cover,
             author: { '@type': 'Organization', name: 'ПаспортСервис' },
             publisher: { '@type': 'Organization', name: 'ПаспортСервис' },
             mainEntityOfPage: articleUrl,
@@ -98,12 +98,7 @@ const ArticlePage = () => {
           <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-primary md:text-4xl">
             {article.title}
           </h1>
-          <img
-            src={article.cover}
-            alt={article.title}
-            className="mt-8 w-full rounded-2xl shadow-lg"
-            loading="eager"
-          />
+          <ArticleIllustration variant={article.illustration} className="mt-8 shadow-sm" />
           <div className="article-content mt-8 space-y-5 text-lg leading-relaxed text-foreground/85">
             {article.content}
           </div>

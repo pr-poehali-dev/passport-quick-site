@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { PROMO_PAGES, PromoKey } from '@/lib/siteLinks';
+import { IllustrationKey } from '@/components/ArticleIllustration';
 
 export type Article = {
   slug: string;
@@ -11,14 +12,11 @@ export type Article = {
   excerpt: string;
   date: string;
   readTime: string;
-  cover: string;
+  illustration: IllustrationKey;
   icon: string;
   relatedPromo: PromoKey;
   content: ReactNode;
 };
-
-const COVER_BIO =
-  'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/bucket/c35cfb78-a28e-41a4-902e-ec211620b0c3.jpg';
 
 const PromoLink = ({ to, children }: { to: PromoKey; children: ReactNode }) => (
   <Link
@@ -47,7 +45,7 @@ export const articles: Article[] = [
       'Разбираем, какие документы собрать родителям, зачем нужен штамп о гражданстве и как избежать отказа при подаче.',
     date: '20 июня 2026',
     readTime: '5 мин',
-    cover: COVER_BIO,
+    illustration: 'documents',
     icon: 'FileText',
     relatedPromo: 'children',
     content: (
@@ -99,7 +97,7 @@ export const articles: Article[] = [
       'Чем отличается паспорт на 10 и на 5 лет, что быстрее и выгоднее для ребёнка и какой вариант выбрать под вашу поездку.',
     date: '14 июня 2026',
     readTime: '4 мин',
-    cover: COVER_BIO,
+    illustration: 'compare',
     icon: 'GitCompare',
     relatedPromo: 'children',
     content: (
@@ -143,7 +141,7 @@ export const articles: Article[] = [
       'Сколько реально ждать паспорт для ребёнка, от чего зависят сроки и как получить документ за считанные часы.',
     date: '6 июня 2026',
     readTime: '4 мин',
-    cover: COVER_BIO,
+    illustration: 'timeline',
     icon: 'Clock',
     relatedPromo: 'children',
     content: (
@@ -185,7 +183,7 @@ export const articles: Article[] = [
       'Разбираем, обязателен ли военный билет для загранпаспорта и как оформить документ без требований военкомата — только официально.',
     date: '26 июня 2026',
     readTime: '5 мин',
-    cover: COVER_BIO,
+    illustration: 'militaryId',
     icon: 'FileX',
     relatedPromo: 'noMilitaryId',
     content: (
@@ -235,7 +233,7 @@ export const articles: Article[] = [
       'Объясняем, почему иногородним в Москве оформляют паспорт до 3 месяцев и как ускорить процесс без переплат.',
     date: '22 июня 2026',
     readTime: '5 мин',
-    cover: COVER_BIO,
+    illustration: 'registration',
     icon: 'MapPinOff',
     relatedPromo: 'noRegistration',
     content: (
