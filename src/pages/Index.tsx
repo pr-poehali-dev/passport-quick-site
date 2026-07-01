@@ -147,7 +147,8 @@ const Index = () => {
             </h1>
             <p className="mt-5 max-w-lg text-lg text-primary-foreground/75">
               Оказываем содействие в оформлении загранпаспорта через МФЦ для взрослых и детей — от 4
-              рабочих дней. Госпошлина включена, без очередей, с гарантией результата.
+              рабочих дней. Цена окончательная: все пошлины, налоги и сборы, заполнение анкет,
+              ксерокопии и фотографии уже включены.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button
@@ -169,7 +170,7 @@ const Index = () => {
             <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
               {[
                 { v: 'от 4 дней', l: 'минимальный срок' },
-                { v: 'госпошлина', l: 'включена в цену' },
+                { v: 'всё включено', l: 'пошлины и сборы' },
                 { v: '100%', l: 'гарантия результата' },
               ].map((s) => (
                 <div key={s.l}>
@@ -229,13 +230,27 @@ const Index = () => {
               Прайс для взрослых и детей от 14 лет
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Госпошлина 6000 ₽ включена в стоимость. Оформление проходит через МФЦ.
+              Цена окончательная и включает всё необходимое. Оформление проходит через МФЦ.
             </p>
           </header>
           <div className="mx-auto mt-12 max-w-3xl">
+            <div className="mb-6 flex items-start gap-4 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                <Icon name="BadgeCheck" size={22} />
+              </div>
+              <div>
+                <p className="font-display text-lg font-semibold text-primary">
+                  В цену уже входит всё необходимое
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  Все пошлины, налоги и сборы, заполнение анкет, необходимые ксерокопии и
+                  фотографии — никаких доплат сверху.
+                </p>
+              </div>
+            </div>
             <PriceTable
               title="Загранпаспорт для взрослых и детей от 14 лет"
-              note="Госпошлина 6000 ₽ включена. Отсчёт рабочих дней — со следующего дня после подачи документов в МФЦ."
+              note="Все пошлины, сборы, заполнение анкет, ксерокопии и фото включены. Отсчёт рабочих дней — со следующего дня после подачи документов в МФЦ."
               rows={priceRows}
               highlightFirst
             />

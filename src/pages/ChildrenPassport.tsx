@@ -175,19 +175,35 @@ const ChildrenPassport = () => {
               Отсчёт рабочих дней идёт со следующего дня после подачи документов в МФЦ.
             </p>
           </header>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-6 lg:grid-cols-2">
-            <PriceTable
-              title="Биометрический паспорт (10 лет)"
-              note="Госпошлина 3000 ₽ оплачивается отдельно в МФЦ."
-              rows={bioRows}
-              highlightFirst
-            />
-            <PriceTable
-              title="Старый образец (5 лет)"
-              note="Госпошлина 1000 ₽ оплачивается отдельно в МФЦ."
-              rows={oldRows}
-              highlightFirst
-            />
+          <div className="mx-auto mt-10 max-w-4xl">
+            <div className="mb-6 flex items-start gap-4 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                <Icon name="BadgeCheck" size={22} />
+              </div>
+              <div>
+                <p className="font-display text-lg font-semibold text-primary">
+                  В цену входит всё необходимое
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  Все сборы, заполнение анкет, необходимые ксерокопии и фотографии уже включены.
+                  Госпошлина оплачивается отдельно в МФЦ.
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <PriceTable
+                title="Биометрический паспорт (10 лет)"
+                note="Госпошлина 3000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
+                rows={bioRows}
+                highlightFirst
+              />
+              <PriceTable
+                title="Старый образец (5 лет)"
+                note="Госпошлина 1000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
+                rows={oldRows}
+                highlightFirst
+              />
+            </div>
           </div>
         </div>
       </section>
