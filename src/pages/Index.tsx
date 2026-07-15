@@ -146,6 +146,15 @@ const Index = () => {
             <h1 className="mt-5 font-display text-4xl font-bold leading-tight md:text-6xl">
               Помощь в оформлении загранпаспорта
             </h1>
+            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+              <span className="text-sm text-primary-foreground/70">Стоимость</span>
+              <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+                от 20 000 ₽
+              </span>
+              <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+                · всё включено
+              </span>
+            </div>
             <p className="mt-5 max-w-lg text-lg text-primary-foreground/75">
               Оказываем содействие в оформлении загранпаспорта через МФЦ для взрослых и детей — от 4
               рабочих дней. Цена окончательная: все пошлины, налоги и сборы, заполнение анкет,
