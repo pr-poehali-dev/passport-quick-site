@@ -30,7 +30,7 @@ const FloatingMessengers = () => {
         aria-label="Написать в MAX"
         className="flex h-14 w-14 items-center justify-center rounded-full bg-[#6B5CFF] text-white shadow-lg transition-transform hover:scale-110"
       >
-        <MaxIcon size={26} />
+        <MaxIcon size={26} mono />
       </a>
     </div>
   );

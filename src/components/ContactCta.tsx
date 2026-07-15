@@ -40,7 +40,7 @@ const ContactCta = () => {
             rel="noopener noreferrer"
             className="flex flex-1 items-center justify-center gap-3 rounded-2xl bg-[#6B5CFF] px-6 py-4 font-display text-lg font-semibold text-white transition-transform hover:scale-[1.03]"
           >
-            <MaxIcon size={24} />
+            <MaxIcon size={24} mono />
             MAX
           </a>
         </div>

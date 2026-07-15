@@ -163,7 +163,7 @@ const WithoutRegistration = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-[#6B5CFF] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
             >
-              <MaxIcon size={22} /> MAX
+              <MaxIcon size={22} mono /> MAX
             </a>
           </div>
         </div>
