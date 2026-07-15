@@ -168,15 +168,18 @@ const Index = () => {
                 <a href="#services">Наши услуги</a>
               </Button>
             </div>
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
+            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
               {[
-                { v: 'от 4 дней', l: 'минимальный срок' },
-                { v: 'всё включено', l: 'пошлины и сборы' },
-                { v: '100%', l: 'гарантия результата' },
+                { v: 'от 4', l: 'рабочих дней' },
+                { v: 'всё', l: 'включено' },
+                { v: '100%', l: 'гарантия' },
               ].map((s) => (
-                <div key={s.l}>
-                  <dt className="font-display text-2xl font-bold text-accent">{s.v}</dt>
-                  <dd className="text-xs text-primary-foreground/60">{s.l}</dd>
+                <div
+                  key={s.l}
+                  className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-3 py-4 text-center"
+                >
+                  <dt className="font-display text-xl font-bold text-accent md:text-2xl">{s.v}</dt>
+                  <dd className="mt-1 text-xs text-primary-foreground/70">{s.l}</dd>
                 </div>
               ))}
             </dl>
@@ -412,6 +415,13 @@ const Index = () => {
                 </span>
               </Link>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button asChild size="lg" variant="outline" className="border-border">
+              <Link to="/articles">
+                Все статьи <Icon name="ArrowRight" size={16} className="ml-1" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -50,12 +50,12 @@ const SiteFooter = () => {
             {PHONE_DISPLAY}
           </a>
           <p className="mt-1 text-sm text-muted-foreground">Ежедневно 9:00–21:00</p>
-          <a
-            href="/#articles"
+          <Link
+            to="/articles"
             className="mt-4 inline-block text-sm text-muted-foreground transition-colors hover:text-accent"
           >
             Полезная информация
-          </a>
+          </Link>
         </div>
       </div>
 

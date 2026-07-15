@@ -9,6 +9,7 @@ import ChildrenPassport from "./pages/ChildrenPassport";
 import WithoutRegistration from "./pages/WithoutRegistration";
 import WithoutMilitaryId from "./pages/WithoutMilitaryId";
 import ArticlePage from "./pages/ArticlePage";
+import Articles from "./pages/Articles";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import FloatingMessengers from "@/components/FloatingMessengers";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/deti-do-14-let" element={<ChildrenPassport />} />
           <Route path="/zagranpasport-bez-propiski-moskva" element={<WithoutRegistration />} />
           <Route path="/zagranpasport-bez-voennogo-bileta" element={<WithoutMilitaryId />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -21,6 +21,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/zagranpasport-rebenku-do-14-let-dokumenty</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
