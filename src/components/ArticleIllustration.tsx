@@ -3,7 +3,9 @@ export type IllustrationKey =
   | 'compare'
   | 'timeline'
   | 'militaryId'
-  | 'registration';
+  | 'registration'
+  | 'photo'
+  | 'fee';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -125,6 +127,51 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <path d="M300 45 c22 0 38 16 38 38 c0 28 -38 56 -38 56 c0 0 -38 -28 -38 -56 c0 -22 16 -38 38 -38 z" fill={accent} />
             <circle cx="300" cy="83" r="14" fill="white" />
             <text x="300" y="165" fontSize="14" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">Москва</text>
+          </svg>
+        );
+      case 'photo':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* photo frame */}
+            <rect x="140" y="25" width="120" height="125" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            {/* head silhouette */}
+            <circle cx="200" cy="78" r="26" fill={soft} />
+            <path d="M158 150 c0 -30 19 -46 42 -46 s42 16 42 46 z" fill={soft} />
+            {/* guide lines */}
+            <line x1="140" y1="52" x2="130" y2="52" stroke={accent} strokeWidth="3" strokeLinecap="round" />
+            <line x1="140" y1="123" x2="130" y2="123" stroke={accent} strokeWidth="3" strokeLinecap="round" />
+            <line x1="126" y1="52" x2="126" y2="123" stroke={accent} strokeWidth="2" strokeDasharray="4 4" />
+            {/* corner marks */}
+            <path d="M150 33 h-6 v6" stroke={accent} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M250 33 h6 v6" stroke={accent} strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            {/* check */}
+            <circle cx="278" cy="128" r="20" fill={accent} />
+            <path d="M269 128 l6 6 11 -13" stroke="hsl(var(--accent-foreground))" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'fee':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* coins stack */}
+            <ellipse cx="120" cy="135" rx="42" ry="13" fill={soft} />
+            <rect x="78" y="95" width="84" height="40" fill={soft} />
+            <ellipse cx="120" cy="95" rx="42" ry="13" fill="white" stroke={line} strokeWidth="2" />
+            <ellipse cx="120" cy="78" rx="42" ry="13" fill="white" stroke={line} strokeWidth="2" />
+            <ellipse cx="120" cy="61" rx="42" ry="13" fill={accent} />
+            <text x="120" y="66" fontSize="15" fontWeight="700" fill="hsl(var(--accent-foreground))" textAnchor="middle" fontFamily="Oswald, sans-serif">₽</text>
+            {/* receipt / passport with price tag */}
+            <rect x="210" y="35" width="90" height="115" rx="8" fill={primary} />
+            <circle cx="255" cy="72" r="15" fill={accent} opacity="0.9" />
+            <line x1="228" y1="100" x2="282" y2="100" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+            <line x1="228" y1="114" x2="282" y2="114" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+            {/* price tag */}
+            <path d="M300 90 l40 0 20 22 -20 22 -40 0 z" fill="white" stroke={line} strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="348" cy="112" r="4" fill={primary} />
+            <text x="318" y="118" fontSize="14" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">₽</text>
           </svg>
         );
     }
