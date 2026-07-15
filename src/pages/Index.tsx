@@ -385,8 +385,8 @@ const Index = () => {
               Разбираем документы, сроки, стоимость и нюансы оформления для взрослых и детей.
             </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {articles.map((a) => (
+          <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+            {articles.slice(-2).reverse().map((a) => (
               <Link
                 key={a.slug}
                 to={`/articles/${a.slug}`}
