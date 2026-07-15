@@ -119,10 +119,18 @@ const WithoutMilitaryId = () => {
           <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
             Загранпаспорт без военного билета
           </h1>
+          <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+            <span className="text-sm text-primary-foreground/70">Стоимость</span>
+            <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+              от 65 000 ₽
+            </span>
+            <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+              · срок 20 рабочих дней
+            </span>
+          </div>
           <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
             Поможем оформить загранпаспорт без обязательного требования документов из военкомата.
-            Действуем строго в рамках закона, только официально и без рисков для заявителя. Срок
-            оформления — 20 рабочих дней, стоимость — от 65 000 ₽.
+            Действуем строго в рамках закона, только официально и без рисков для заявителя.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a

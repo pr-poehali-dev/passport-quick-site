@@ -126,6 +126,15 @@ const ChildrenPassport = () => {
           <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
             Загранпаспорт ребёнку до 14 лет срочно
           </h1>
+          <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+            <span className="text-sm text-primary-foreground/70">Стоимость</span>
+            <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+              от 20 000 ₽
+            </span>
+            <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+              · от 2–3 часов
+            </span>
+          </div>
           <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
             Оказываем помощь и содействие в срочном оформлении загранпаспорта для детей до 14 лет
             через МФЦ. Два варианта на выбор: биометрический паспорт на 10 лет и паспорт старого

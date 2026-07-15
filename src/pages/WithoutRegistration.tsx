@@ -135,6 +135,15 @@ const WithoutRegistration = () => {
           <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
             Загранпаспорт без прописки и регистрации в Москве
           </h1>
+          <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+            <span className="text-sm text-primary-foreground/70">Стоимость</span>
+            <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+              от 26 000 ₽
+            </span>
+            <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+              · от 4 рабочих дней
+            </span>
+          </div>
           <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
             Прописаны в регионе, а подаёте документы в Москве? По регламенту МВД для иногородних
             оформление занимает до 3 месяцев. Мы помогаем взрослым получить загранпаспорт

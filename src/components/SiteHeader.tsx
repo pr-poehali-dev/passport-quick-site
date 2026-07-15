@@ -9,9 +9,11 @@ const nav = [
   { label: PROMO_PAGES.children.navLabel, href: PROMO_PAGES.children.path },
   { label: PROMO_PAGES.noRegistration.navLabel, href: PROMO_PAGES.noRegistration.path },
   { label: PROMO_PAGES.noMilitaryId.navLabel, href: PROMO_PAGES.noMilitaryId.path },
-  { label: 'Статьи', href: '/#articles' },
+  { label: 'Статьи', href: '/articles' },
   { label: 'Контакты', href: '/#contacts' },
 ];
+
+const isRoute = (href: string) => href.startsWith('/') && !href.includes('#');
 
 const SiteHeader = () => {
   const [menu, setMenu] = useState(false);
@@ -26,15 +28,25 @@ const SiteHeader = () => {
           <span className="font-display text-xl font-bold text-primary">ПаспортСервис</span>
         </Link>
         <nav className="hidden items-center gap-6 xl:flex">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="text-sm font-medium text-foreground/70 transition-colors hover:text-accent"
-            >
-              {n.label}
-            </a>
-          ))}
+          {nav.map((n) =>
+            isRoute(n.href) ? (
+              <Link
+                key={n.href}
+                to={n.href}
+                className="text-sm font-medium text-foreground/70 transition-colors hover:text-accent"
+              >
+                {n.label}
+              </Link>
+            ) : (
+              <a
+                key={n.href}
+                href={n.href}
+                className="text-sm font-medium text-foreground/70 transition-colors hover:text-accent"
+              >
+                {n.label}
+              </a>
+            ),
+          )}
         </nav>
         <div className="hidden items-center gap-4 xl:flex">
           <a
@@ -50,16 +62,27 @@ const SiteHeader = () => {
       </div>
       {menu && (
         <nav className="border-t border-border bg-background px-4 py-4 xl:hidden">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              onClick={() => setMenu(false)}
-              className="block py-2.5 font-medium text-foreground/80"
-            >
-              {n.label}
-            </a>
-          ))}
+          {nav.map((n) =>
+            isRoute(n.href) ? (
+              <Link
+                key={n.href}
+                to={n.href}
+                onClick={() => setMenu(false)}
+                className="block py-2.5 font-medium text-foreground/80"
+              >
+                {n.label}
+              </Link>
+            ) : (
+              <a
+                key={n.href}
+                href={n.href}
+                onClick={() => setMenu(false)}
+                className="block py-2.5 font-medium text-foreground/80"
+              >
+                {n.label}
+              </a>
+            ),
+          )}
           <a href={`tel:${PHONE_TEL}`} className="mt-2 block font-semibold text-primary">
             {PHONE_DISPLAY}
           </a>
