@@ -14,7 +14,8 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import RelatedPromo from '@/components/RelatedPromo';
-import { WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
+import MaxIcon from '@/components/MaxIcon';
+import { WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
 const PAGE_URL = 'https://паспортсервис.рф/zagranpasport-bez-propiski-moskva';
 const PAGE_TITLE =
@@ -155,6 +156,14 @@ const WithoutRegistration = () => {
               className="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
             >
               <Icon name="Send" size={22} /> Telegram
+            </a>
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#6B5CFF] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
+            >
+              <MaxIcon size={22} /> MAX
             </a>
           </div>
         </div>

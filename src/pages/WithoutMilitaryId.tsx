@@ -13,13 +13,14 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import RelatedPromo from '@/components/RelatedPromo';
-import { WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
+import MaxIcon from '@/components/MaxIcon';
+import { WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
 const PAGE_URL = 'https://паспортсервис.рф/zagranpasport-bez-voennogo-bileta';
 const PAGE_TITLE =
   'Загранпаспорт без военного билета срочно | Помощь в оформлении — ПаспортСервис';
 const PAGE_DESC =
-  'Помощь в оформлении загранпаспорта без военного билета и справок из военкомата. Только официально, в рамках закона, без рисков для заявителя. Срок 20 рабочих дней, стоимость по запросу.';
+  'Помощь в оформлении загранпаспорта без военного билета и справок из военкомата. Только официально, в рамках закона, без рисков для заявителя. Срок 20 рабочих дней, стоимость от 65 000 ₽.';
 const PAGE_KEYWORDS =
   'загранпаспорт без военного билета, загранпаспорт без военкомата, загранпаспорт без справки из военкомата, оформить загранпаспорт мужчине без военного билета';
 
@@ -42,7 +43,7 @@ const advantages = [
   {
     icon: 'Clock',
     title: 'Срок 20 рабочих дней',
-    desc: 'Оформление в стандартный срок. Стоимость рассчитываем индивидуально по запросу.',
+    desc: 'Оформление в стандартный срок. Стоимость — от 65 000 ₽.',
   },
 ];
 
@@ -61,7 +62,7 @@ const faq = [
   },
   {
     q: 'Сколько это стоит?',
-    a: 'Стоимость рассчитывается индивидуально в зависимости от ситуации. Напишите нам в WhatsApp или Telegram — уточним детали и назовём точную цену.',
+    a: 'Стоимость оформления — от 65 000 ₽, точная сумма зависит от ситуации. Напишите нам в WhatsApp, Telegram или MAX — уточним детали и назовём итоговую цену.',
   },
 ];
 
@@ -121,7 +122,7 @@ const WithoutMilitaryId = () => {
           <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
             Поможем оформить загранпаспорт без обязательного требования документов из военкомата.
             Действуем строго в рамках закона, только официально и без рисков для заявителя. Срок
-            оформления — 20 рабочих дней, стоимость рассчитываем по запросу.
+            оформления — 20 рабочих дней, стоимость — от 65 000 ₽.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
@@ -139,6 +140,14 @@ const WithoutMilitaryId = () => {
               className="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
             >
               <Icon name="Send" size={22} /> Telegram
+            </a>
+            <a
+              href={MAX_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#6B5CFF] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
+            >
+              <MaxIcon size={22} /> MAX
             </a>
           </div>
         </div>
@@ -179,9 +188,10 @@ const WithoutMilitaryId = () => {
             <h2>Сроки и стоимость</h2>
             <p>
               Стандартный срок оформления составляет <strong>20 рабочих дней</strong>. Отсчёт идёт со
-              следующего дня после подачи документов. Стоимость услуги рассчитывается индивидуально —
-              она зависит от конкретной ситуации заявителя. Чтобы узнать точную цену, напишите нам в
-              WhatsApp или Telegram: специалист изучит ваш случай и назовёт стоимость.
+              следующего дня после подачи документов. Стоимость услуги — <strong>от 65 000 ₽</strong>,
+              точная сумма зависит от конкретной ситуации заявителя. Чтобы узнать итоговую цену,
+              напишите нам в WhatsApp, Telegram или MAX: специалист изучит ваш случай и назовёт
+              стоимость.
             </p>
           </article>
         </div>
@@ -289,6 +299,12 @@ const WithoutMilitaryId = () => {
             provider: { '@type': 'Organization', name: 'ПаспортСервис' },
             areaServed: 'RU',
             description: PAGE_DESC,
+            offers: {
+              '@type': 'Offer',
+              price: '65000',
+              priceCurrency: 'RUB',
+              availability: 'https://schema.org/InStock',
+            },
           },
           {
             '@context': 'https://schema.org',

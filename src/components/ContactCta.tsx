@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
-import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, TELEGRAM_URL } from '@/lib/contacts';
+import MaxIcon from '@/components/MaxIcon';
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
 const ContactCta = () => {
   return (
@@ -32,6 +33,15 @@ const ContactCta = () => {
           >
             <Icon name="Send" size={24} />
             Telegram
+          </a>
+          <a
+            href={MAX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-3 rounded-2xl bg-[#6B5CFF] px-6 py-4 font-display text-lg font-semibold text-white transition-transform hover:scale-[1.03]"
+          >
+            <MaxIcon size={24} />
+            MAX
           </a>
         </div>
 

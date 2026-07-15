@@ -16,4 +16,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://паспортсервис.рф/sitemap.xml
+Sitemap: https://xn--80aein1aebjbfdeh.xn--p1ai/sitemap.xml
