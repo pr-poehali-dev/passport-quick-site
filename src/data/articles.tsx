@@ -16,6 +16,8 @@ export type Article = {
   icon: string;
   relatedPromo: PromoKey;
   content: ReactNode;
+  /** Временно скрыть статью из списков (прямая ссылка остаётся рабочей). */
+  hidden?: boolean;
 };
 
 const PromoLink = ({ to, children }: { to: PromoKey; children: ReactNode }) => (
@@ -31,7 +33,7 @@ const ChildLink = ({ children }: { children: ReactNode }) => (
   <PromoLink to="children">{children}</PromoLink>
 );
 
-export const articles: Article[] = [
+const allArticles: Article[] = [
   {
     slug: 'zagranpasport-rebenku-do-14-let-dokumenty',
     title: 'Какие документы нужны для загранпаспорта ребёнку до 14 лет',
@@ -186,6 +188,7 @@ export const articles: Article[] = [
     illustration: 'militaryId',
     icon: 'FileX',
     relatedPromo: 'noMilitaryId',
+    hidden: true,
     content: (
       <>
         <p>
@@ -360,4 +363,8 @@ export const articles: Article[] = [
   },
 ];
 
-export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
+/** Статьи, видимые в списках (без временно скрытых). */
+export const articles: Article[] = allArticles.filter((a) => !a.hidden);
+
+/** Поиск по всем статьям, включая скрытые (для прямых ссылок). */
+export const getArticle = (slug: string) => allArticles.find((a) => a.slug === slug);

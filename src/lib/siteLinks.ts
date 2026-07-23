@@ -24,6 +24,8 @@ export interface PromoPage {
   cardTitle: string;
   cardDesc: string;
   icon: string;
+  /** Временно скрыть страницу из меню, футера и блоков перелинковки (роут остаётся рабочим). */
+  hidden?: boolean;
 }
 
 export const PROMO_PAGES: Record<PromoKey, PromoPage> = {
@@ -50,11 +52,16 @@ export const PROMO_PAGES: Record<PromoKey, PromoPage> = {
     cardTitle: 'Загранпаспорт без военного билета',
     cardDesc: 'Без справок из военкомата. Только официально, в рамках закона.',
     icon: 'FileX',
+    hidden: true,
   },
 };
 
 export const promoUrl = (key: PromoKey) => `${SITE_URL}${PROMO_PAGES[key].path}`;
 
-/** Ссылки "Смотрите также" для промостраницы: все остальные промо. */
+/** Все промостраницы, видимые в навигации и перелинковке (без временно скрытых). */
+export const visiblePromoPages = (): PromoPage[] =>
+  Object.values(PROMO_PAGES).filter((p) => !p.hidden);
+
+/** Ссылки "Смотрите также" для промостраницы: все остальные видимые промо. */
 export const getCrossLinks = (current: PromoKey): PromoPage[] =>
-  Object.values(PROMO_PAGES).filter((p) => p.key !== current);
+  Object.values(PROMO_PAGES).filter((p) => p.key !== current && !p.hidden);

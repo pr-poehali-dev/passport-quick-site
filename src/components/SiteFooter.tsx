@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/contacts';
-import { PROMO_PAGES } from '@/lib/siteLinks';
+import { visiblePromoPages } from '@/lib/siteLinks';
 
 const services = [
   { label: 'Загранпаспорт взрослым', href: '/#prices' },
-  { label: PROMO_PAGES.children.navLabel, href: PROMO_PAGES.children.path },
-  { label: PROMO_PAGES.noRegistration.navLabel, href: PROMO_PAGES.noRegistration.path },
-  { label: PROMO_PAGES.noMilitaryId.navLabel, href: PROMO_PAGES.noMilitaryId.path },
+  ...visiblePromoPages().map((p) => ({ label: p.navLabel, href: p.path })),
 ];
 
 const SiteFooter = () => {

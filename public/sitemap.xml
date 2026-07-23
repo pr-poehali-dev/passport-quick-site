@@ -16,11 +16,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/zagranpasport-bez-voennogo-bileta</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -37,11 +32,6 @@
   </url>
   <url>
     <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/zagranpasport-rebenku-sroki-oformleniya</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/zagranpasport-bez-voennogo-bileta-zakonno</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
