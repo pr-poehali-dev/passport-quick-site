@@ -178,8 +178,32 @@ const WithoutRegistration = () => {
         </div>
       </section>
 
+      {/* Prices */}
+      <section id="prices" className="py-14 md:py-20">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Стоимость — как для всех взрослых
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Цена окончательная и включает все пошлины, сборы, анкеты, копии и фото. Наценок за
+              иногороднюю прописку нет.
+            </p>
+          </header>
+          <div className="mx-auto mt-10 max-w-3xl">
+            <PriceTable
+              title="Загранпаспорт для взрослых без прописки в Москве"
+              note="Все пошлины, сборы, заполнение анкет, ксерокопии и фото включены. Отсчёт рабочих дней — со следующего дня после подачи документов в МФЦ."
+              rows={priceRows}
+              highlightFirst
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Problem / solution text */}
-      <section className="py-14 md:py-20">
+      <section className="bg-secondary py-14 md:py-20">
         <div className="container max-w-3xl">
           <article className="article-content space-y-5 text-lg leading-relaxed text-foreground/85">
             <h2>Можно ли оформить загранпаспорт в Москве без прописки</h2>
@@ -235,7 +259,7 @@ const WithoutRegistration = () => {
       </section>
 
       {/* Advantages */}
-      <section className="bg-secondary py-14 md:py-20">
+      <section className="py-14 md:py-20">
         <div className="container">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {advantages.map((a) => (
@@ -247,30 +271,6 @@ const WithoutRegistration = () => {
                 <p className="mt-2 text-sm text-muted-foreground">{a.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Prices */}
-      <section id="prices" className="py-14 md:py-20">
-        <div className="container">
-          <header className="mx-auto max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Стоимость — как для всех взрослых
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Цена окончательная и включает все пошлины, сборы, анкеты, копии и фото. Наценок за
-              иногороднюю прописку нет.
-            </p>
-          </header>
-          <div className="mx-auto mt-10 max-w-3xl">
-            <PriceTable
-              title="Загранпаспорт для взрослых без прописки в Москве"
-              note="Все пошлины, сборы, заполнение анкет, ксерокопии и фото включены. Отсчёт рабочих дней — со следующего дня после подачи документов в МФЦ."
-              rows={priceRows}
-              highlightFirst
-            />
           </div>
         </div>
       </section>
