@@ -160,8 +160,54 @@ const ChildrenPassport = () => {
         </div>
       </section>
 
+      {/* Prices */}
+      <section id="child-prices" className="py-14 md:py-20">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Стоимость для детей до 14 лет
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Два варианта на выбор: биометрический паспорт на 10 лет и паспорт старого образца на 5
+              лет. Отсчёт рабочих дней идёт со следующего дня после подачи документов в МФЦ.
+            </p>
+          </header>
+          <div className="mx-auto mt-10 max-w-4xl">
+            <div className="mb-6 flex items-start gap-4 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                <Icon name="BadgeCheck" size={22} />
+              </div>
+              <div>
+                <p className="font-display text-lg font-semibold text-primary">
+                  В цену входит всё необходимое
+                </p>
+                <p className="mt-1 text-sm text-foreground/80">
+                  Все сборы, заполнение анкет, необходимые ксерокопии и фотографии уже включены.
+                  Госпошлина оплачивается отдельно в МФЦ.
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <PriceTable
+                title="Биометрический паспорт (10 лет)"
+                note="Госпошлина 3000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
+                rows={bioRows}
+                highlightFirst
+              />
+              <PriceTable
+                title="Старый образец (5 лет)"
+                note="Госпошлина 1000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
+                rows={oldRows}
+                highlightFirst
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Intro text — SEO */}
-      <section className="py-14 md:py-20">
+      <section className="bg-secondary py-14 md:py-20">
         <div className="container max-w-3xl">
           <article className="article-content space-y-5 text-lg leading-relaxed text-foreground/85">
             <h2>Помощь в оформлении загранпаспорта ребёнку до 14 лет</h2>
@@ -216,7 +262,7 @@ const ChildrenPassport = () => {
       </section>
 
       {/* Advantages */}
-      <section className="bg-secondary py-14 md:py-20">
+      <section className="py-14 md:py-20">
         <div className="container">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {advantages.map((a) => (
@@ -232,50 +278,7 @@ const ChildrenPassport = () => {
         </div>
       </section>
 
-      {/* Prices */}
-      <section id="child-prices" className="py-14 md:py-20">
-        <div className="container">
-          <header className="mx-auto max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
-              Стоимость для детей до 14 лет
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Отсчёт рабочих дней идёт со следующего дня после подачи документов в МФЦ.
-            </p>
-          </header>
-          <div className="mx-auto mt-10 max-w-4xl">
-            <div className="mb-6 flex items-start gap-4 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground">
-                <Icon name="BadgeCheck" size={22} />
-              </div>
-              <div>
-                <p className="font-display text-lg font-semibold text-primary">
-                  В цену входит всё необходимое
-                </p>
-                <p className="mt-1 text-sm text-foreground/80">
-                  Все сборы, заполнение анкет, необходимые ксерокопии и фотографии уже включены.
-                  Госпошлина оплачивается отдельно в МФЦ.
-                </p>
-              </div>
-            </div>
-            <div className="grid gap-6 lg:grid-cols-2">
-              <PriceTable
-                title="Биометрический паспорт (10 лет)"
-                note="Госпошлина 3000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
-                rows={bioRows}
-                highlightFirst
-              />
-              <PriceTable
-                title="Старый образец (5 лет)"
-                note="Госпошлина 1000 ₽ оплачивается отдельно в МФЦ. Анкеты, копии и фото включены."
-                rows={oldRows}
-                highlightFirst
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Documents */}
       <section id="child-docs" className="bg-secondary py-14 md:py-20">
