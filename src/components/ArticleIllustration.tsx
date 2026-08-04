@@ -5,7 +5,8 @@ export type IllustrationKey =
   | 'militaryId'
   | 'registration'
   | 'photo'
-  | 'fee';
+  | 'fee'
+  | 'stamp';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -172,6 +173,24 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <path d="M300 90 l40 0 20 22 -20 22 -40 0 z" fill="white" stroke={line} strokeWidth="2" strokeLinejoin="round" />
             <circle cx="348" cy="112" r="4" fill={primary} />
             <text x="318" y="118" fontSize="14" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">₽</text>
+          </svg>
+        );
+      case 'stamp':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* birth certificate document */}
+            <rect x="75" y="30" width="115" height="120" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <line x1="93" y1="55" x2="167" y2="55" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="93" y1="73" x2="167" y2="73" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="93" y1="91" x2="145" y2="91" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="93" y1="118" x2="167" y2="118" stroke={soft} strokeWidth="10" strokeLinecap="round" />
+            {/* stamp circle overlapping document */}
+            <circle cx="255" cy="105" r="52" fill="none" stroke={accent} strokeWidth="6" />
+            <circle cx="255" cy="105" r="38" fill="none" stroke={accent} strokeWidth="3" strokeDasharray="6 5" />
+            <path d="M233 108 l14 14 24 -30" stroke={accent} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <text x="255" y="45" fontSize="12" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">РФ</text>
           </svg>
         );
     }
