@@ -8,7 +8,9 @@ export type IllustrationKey =
   | 'fee'
   | 'stamp'
   | 'presence'
-  | 'oldRule';
+  | 'oldRule'
+  | 'nameChange'
+  | 'delayFactors';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -230,6 +232,46 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <circle cx="292" cy="82" r="17" fill={accent} opacity="0.9" />
             <line x1="265" y1="115" x2="320" y2="115" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
             <line x1="265" y1="128" x2="320" y2="128" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+          </svg>
+        );
+      case 'nameChange':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* old name document */}
+            <rect x="55" y="35" width="115" height="105" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <line x1="73" y1="60" x2="150" y2="60" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="73" y1="78" x2="135" y2="78" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <line x1="73" y1="100" x2="150" y2="100" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            {/* arrow */}
+            <path d="M182 87 h48" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <path d="M215 72 l20 15 -20 15" stroke={accent} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* new name document */}
+            <rect x="255" y="35" width="115" height="105" rx="8" fill={primary} />
+            <line x1="273" y1="60" x2="350" y2="60" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+            <line x1="273" y1="78" x2="335" y2="78" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <line x1="273" y1="100" x2="350" y2="100" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+          </svg>
+        );
+      case 'delayFactors':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* warning triangle */}
+            <path d="M200 30 l60 105 h-120 z" fill="none" stroke={accent} strokeWidth="6" strokeLinejoin="round" />
+            <line x1="200" y1="65" x2="200" y2="100" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+            <circle cx="200" cy="118" r="4" fill={accent} />
+            {/* clock left */}
+            <circle cx="80" cy="95" r="30" fill="white" stroke={line} strokeWidth="3" />
+            <line x1="80" y1="95" x2="80" y2="75" stroke={primary} strokeWidth="4" strokeLinecap="round" />
+            <line x1="80" y1="95" x2="95" y2="103" stroke={primary} strokeWidth="4" strokeLinecap="round" />
+            {/* document right */}
+            <rect x="290" y="55" width="80" height="95" rx="8" fill={primary} />
+            <circle cx="330" cy="85" r="13" fill={accent} opacity="0.9" />
+            <line x1="305" y1="112" x2="355" y2="112" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+            <line x1="305" y1="125" x2="355" y2="125" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
           </svg>
         );
     }
