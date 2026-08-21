@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -14,12 +13,16 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import RelatedPromo from '@/components/RelatedPromo';
+import RelatedArticles from '@/components/RelatedArticles';
+import usePageSeo from '@/hooks/usePageSeo';
 
 const PAGE_URL = 'https://паспортсервис.рф/deti-do-14-let';
 const PAGE_TITLE =
   'Загранпаспорт ребёнку до 14 лет срочно | Помощь в оформлении через МФЦ';
 const PAGE_DESC =
   'Помощь в срочном оформлении загранпаспорта ребёнку до 14 лет: биометрия на 10 лет и старый образец на 5 лет. Цены, сроки от 2 часов, список документов. Содействие через МФЦ.';
+const PAGE_KEYWORDS =
+  'загранпаспорт ребёнку до 14 лет, детский загранпаспорт срочно, загранпаспорт ребёнку через МФЦ, оформить загранпаспорт ребёнку, биометрический паспорт ребёнку';
 
 const faq = [
   {
@@ -79,29 +82,12 @@ const advantages = [
 ];
 
 const ChildrenPassport = () => {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = PAGE_TITLE;
-
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute('name', name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-    setMeta('description', PAGE_DESC);
-    setMeta(
-      'keywords',
-      'загранпаспорт ребёнку до 14 лет, детский загранпаспорт срочно, загранпаспорт ребёнку через МФЦ, оформить загранпаспорт ребёнку, биометрический паспорт ребёнку',
-    );
-
-    return () => {
-      document.title = prevTitle;
-    };
-  }, []);
+  usePageSeo({
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    keywords: PAGE_KEYWORDS,
+    path: '/deti-do-14-let',
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -376,6 +362,7 @@ const ChildrenPassport = () => {
         ]}
       />
 
+      <RelatedArticles promo="children" />
       <RelatedPromo current="children" />
       <ContactCta />
       <SiteFooter />

@@ -11,10 +11,18 @@ import PriceTable from '@/components/PriceTable';
 import SiteHeader from '@/components/SiteHeader';
 import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
+import JsonLd from '@/components/JsonLd';
+import usePageSeo from '@/hooks/usePageSeo';
 import { articles } from '@/data/articles';
 
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/bucket/c35cfb78-a28e-41a4-902e-ec211620b0c3.jpg';
+
+const PAGE_TITLE = 'Помощь в оформлении загранпаспорта через МФЦ срочно | ПаспортСервис';
+const PAGE_DESC =
+  'Помощь и содействие в срочном оформлении загранпаспорта через МФЦ для взрослых и детей — от 4 рабочих дней. Госпошлина включена, без очередей, гарантия результата.';
+const PAGE_KEYWORDS =
+  'помощь в оформлении загранпаспорта, загранпаспорт срочно через мфц, содействие в получении загранпаспорта, срочный загранпаспорт, загранпаспорт без очереди';
 
 const services = [
   {
@@ -131,9 +139,29 @@ const faq = [
 ];
 
 const Index = () => {
+  usePageSeo({
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    keywords: PAGE_KEYWORDS,
+    path: '/',
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
+
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: 'ПаспортСервис',
+          description: 'Помощь и содействие в оформлении загранпаспорта через МФЦ',
+          priceRange: 'от 20000 ₽',
+          areaServed: 'RU',
+          telephone: '+7 903 136-38-08',
+          url: 'https://паспортсервис.рф/',
+        }}
+      />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">

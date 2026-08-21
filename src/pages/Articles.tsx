@@ -1,39 +1,55 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import ContactCta from '@/components/ContactCta';
+import JsonLd from '@/components/JsonLd';
+import usePageSeo from '@/hooks/usePageSeo';
+import { SITE_URL } from '@/lib/siteLinks';
 import { articles } from '@/data/articles';
 
 const PAGE_TITLE = 'Статьи об оформлении загранпаспорта | ПаспортСервис';
 const PAGE_DESC =
   'Полезные статьи об оформлении загранпаспорта: документы, сроки, стоимость, требования к фото и нюансы для взрослых и детей.';
+const PAGE_KEYWORDS =
+  'статьи о загранпаспорте, документы на загранпаспорт, сроки оформления загранпаспорта, требования к фото на загранпаспорт';
 
 const Articles = () => {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = PAGE_TITLE;
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute('name', name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-    setMeta('description', PAGE_DESC);
-    return () => {
-      document.title = prevTitle;
-    };
-  }, []);
+  usePageSeo({
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    keywords: PAGE_KEYWORDS,
+    path: '/articles',
+  });
 
   const list = [...articles].reverse();
 
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
+
+      <JsonLd
+        data={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Главная', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Статьи', item: `${SITE_URL}/articles` },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            itemListElement: list.map((a, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              url: `${SITE_URL}/articles/${a.slug}`,
+              name: a.title,
+            })),
+          },
+        ]}
+      />
 
       <nav aria-label="Хлебные крошки" className="border-b border-border bg-secondary/50">
         <div className="container flex items-center gap-2 py-3 text-sm text-muted-foreground">

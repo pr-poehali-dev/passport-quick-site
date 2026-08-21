@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
@@ -7,41 +6,31 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import ArticleIllustration from '@/components/ArticleIllustration';
+import usePageSeo from '@/hooks/usePageSeo';
 import { getArticle, articles } from '@/data/articles';
-import { PROMO_PAGES } from '@/lib/siteLinks';
+import { PROMO_PAGES, SITE_URL } from '@/lib/siteLinks';
 
 const ArticlePage = () => {
   const { slug } = useParams();
   const article = slug ? getArticle(slug) : undefined;
 
-  useEffect(() => {
-    if (!article) return;
-    const prevTitle = document.title;
-    document.title = article.metaTitle;
-
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute('name', name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-    setMeta('description', article.metaDescription);
-    setMeta('keywords', article.keywords);
-    window.scrollTo(0, 0);
-
-    return () => {
-      document.title = prevTitle;
-    };
-  }, [article]);
+  usePageSeo({
+    title: article?.metaTitle ?? 'Статья не найдена | ПаспортСервис',
+    description: article?.metaDescription ?? '',
+    keywords: article?.keywords,
+    path: slug ? `/articles/${slug}` : undefined,
+  });
 
   if (!article) return <Navigate to="/" replace />;
 
-  const others = articles.filter((a) => a.slug !== article.slug).slice(0, 2);
+  const rest = articles.filter((a) => a.slug !== article.slug);
+  const sameTopic = rest.filter((a) => a.relatedPromo === article.relatedPromo);
+  const others = [...sameTopic, ...rest.filter((a) => a.relatedPromo !== article.relatedPromo)].slice(
+    0,
+    2,
+  );
 
-  const articleUrl = `https://паспортсервис.рф/articles/${article.slug}`;
+  const articleUrl = `${SITE_URL}/articles/${article.slug}`;
   const promo = PROMO_PAGES[article.relatedPromo];
 
   return (
@@ -63,8 +52,8 @@ const ArticlePage = () => {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://паспортсервис.рф/' },
-              { '@type': 'ListItem', position: 2, name: 'Статьи', item: 'https://паспортсервис.рф/#articles' },
+              { '@type': 'ListItem', position: 1, name: 'Главная', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Статьи', item: `${SITE_URL}/articles` },
               { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
             ],
           },
@@ -77,9 +66,9 @@ const ArticlePage = () => {
             Главная
           </Link>
           <Icon name="ChevronRight" size={14} />
-          <a href="/#articles" className="hover:text-accent">
+          <Link to="/articles" className="hover:text-accent">
             Статьи
-          </a>
+          </Link>
           <Icon name="ChevronRight" size={14} />
           <span className="text-foreground">{article.title}</span>
         </div>

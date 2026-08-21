@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import usePageSeo from '@/hooks/usePageSeo';
 
 const PAGE_TITLE = 'Политика конфиденциальности и согласие на обработку данных | ПаспортСервис';
 const PAGE_DESC =
@@ -37,23 +37,11 @@ const sections = [
 ];
 
 const Privacy = () => {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = PAGE_TITLE;
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute('name', name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-    setMeta('description', PAGE_DESC);
-    return () => {
-      document.title = prevTitle;
-    };
-  }, []);
+  usePageSeo({
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    path: '/privacy',
+  });
 
   return (
     <div className="min-h-screen bg-background">

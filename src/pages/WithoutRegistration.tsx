@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -14,7 +13,9 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import RelatedPromo from '@/components/RelatedPromo';
+import RelatedArticles from '@/components/RelatedArticles';
 import MaxIcon from '@/components/MaxIcon';
+import usePageSeo from '@/hooks/usePageSeo';
 import { WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
 const PAGE_URL = 'https://паспортсервис.рф/zagranpasport-bez-propiski-moskva';
@@ -91,25 +92,12 @@ const docs = [
 ];
 
 const WithoutRegistration = () => {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = PAGE_TITLE;
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute('name', name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute('content', content);
-    };
-    setMeta('description', PAGE_DESC);
-    setMeta('keywords', PAGE_KEYWORDS);
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = prevTitle;
-    };
-  }, []);
+  usePageSeo({
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    keywords: PAGE_KEYWORDS,
+    path: '/zagranpasport-bez-propiski-moskva',
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -374,6 +362,7 @@ const WithoutRegistration = () => {
         ]}
       />
 
+      <RelatedArticles promo="noRegistration" />
       <RelatedPromo current="noRegistration" />
       <ContactCta />
       <SiteFooter />
