@@ -6,7 +6,9 @@ export type IllustrationKey =
   | 'registration'
   | 'photo'
   | 'fee'
-  | 'stamp';
+  | 'stamp'
+  | 'presence'
+  | 'oldRule';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -191,6 +193,43 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <circle cx="255" cy="105" r="38" fill="none" stroke={accent} strokeWidth="3" strokeDasharray="6 5" />
             <path d="M233 108 l14 14 24 -30" stroke={accent} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             <text x="255" y="45" fontSize="12" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">РФ</text>
+          </svg>
+        );
+      case 'presence':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* service window */}
+            <rect x="230" y="30" width="130" height="115" rx="10" fill="white" stroke={line} strokeWidth="2" />
+            <rect x="248" y="48" width="94" height="50" rx="6" fill={soft} />
+            <line x1="248" y1="112" x2="342" y2="112" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="248" y1="126" x2="310" y2="126" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            {/* parent figure */}
+            <circle cx="95" cy="70" r="20" fill={primary} />
+            <path d="M55 150 c0 -38 24 -58 40 -58 s40 20 40 58 z" fill={primary} />
+            {/* child figure */}
+            <circle cx="165" cy="95" r="13" fill={accent} />
+            <path d="M140 150 c0 -25 12 -37 25 -37 s25 12 25 37 z" fill={accent} />
+          </svg>
+        );
+      case 'oldRule':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* old parent passport with crossed-out child photo */}
+            <rect x="55" y="30" width="130" height="115" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <circle cx="90" cy="70" r="18" fill={soft} />
+            <line x1="118" y1="60" x2="165" y2="60" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="118" y1="76" x2="165" y2="76" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="70" y1="112" x2="170" y2="112" stroke={soft} strokeWidth="8" strokeLinecap="round" />
+            <line x1="45" y1="25" x2="195" y2="150" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+            {/* separate child passport */}
+            <rect x="245" y="45" width="95" height="115" rx="8" fill={primary} />
+            <circle cx="292" cy="82" r="17" fill={accent} opacity="0.9" />
+            <line x1="265" y1="115" x2="320" y2="115" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+            <line x1="265" y1="128" x2="320" y2="128" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
           </svg>
         );
     }
