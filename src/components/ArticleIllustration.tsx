@@ -10,7 +10,9 @@ export type IllustrationKey =
   | 'presence'
   | 'oldRule'
   | 'nameChange'
-  | 'delayFactors';
+  | 'delayFactors'
+  | 'statusCheck'
+  | 'lostPassport';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -272,6 +274,47 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <circle cx="330" cy="85" r="13" fill={accent} opacity="0.9" />
             <line x1="305" y1="112" x2="355" y2="112" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
             <line x1="305" y1="125" x2="355" y2="125" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+          </svg>
+        );
+      case 'statusCheck':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* browser / screen */}
+            <rect x="60" y="35" width="200" height="120" rx="10" fill="white" stroke={line} strokeWidth="2" />
+            <rect x="60" y="35" width="200" height="24" rx="10" fill={soft} />
+            <circle cx="75" cy="47" r="4" fill={accent} />
+            <circle cx="88" cy="47" r="4" fill={line} />
+            <line x1="80" y1="90" x2="220" y2="90" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="80" y1="108" x2="200" y2="108" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="80" y1="126" x2="160" y2="126" stroke={soft} strokeWidth="8" strokeLinecap="round" />
+            {/* magnifier with check */}
+            <circle cx="315" cy="90" r="38" fill="none" stroke={primary} strokeWidth="7" />
+            <line x1="341" y1="117" x2="365" y2="141" stroke={primary} strokeWidth="9" strokeLinecap="round" />
+            <path d="M298 90 l12 12 22 -26" stroke={accent} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'lostPassport':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* lost passport, faded with question mark */}
+            <rect x="60" y="35" width="110" height="115" rx="8" fill="white" stroke={line} strokeWidth="2" strokeDasharray="7 6" opacity="0.7" />
+            <circle cx="115" cy="80" r="18" fill={soft} />
+            <text x="115" y="88" fontSize="22" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif" opacity="0.6">?</text>
+            <line x1="78" y1="118" x2="152" y2="118" stroke={soft} strokeWidth="6" strokeLinecap="round" />
+            {/* arrow to new passport */}
+            <path d="M188 92 h44" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <path d="M220 78 l18 14 -18 14" stroke={accent} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* new passport with check */}
+            <rect x="250" y="35" width="110" height="115" rx="8" fill={primary} />
+            <circle cx="305" cy="75" r="16" fill={accent} opacity="0.9" />
+            <line x1="278" y1="105" x2="332" y2="105" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+            <line x1="278" y1="118" x2="332" y2="118" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+            <circle cx="335" cy="140" r="18" fill={accent} />
+            <path d="M326 140 l6 6 11 -13" stroke="hsl(var(--accent-foreground))" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           </svg>
         );
     }
