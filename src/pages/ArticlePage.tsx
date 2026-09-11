@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
@@ -6,13 +7,16 @@ import ContactCta from '@/components/ContactCta';
 import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import ArticleIllustration from '@/components/ArticleIllustration';
+import ArticleTableOfContents from '@/components/ArticleTableOfContents';
 import usePageSeo from '@/hooks/usePageSeo';
+import { parseRussianDateToISO } from '@/lib/dateUtils';
 import { getArticle, articles } from '@/data/articles';
 import { PROMO_PAGES, SITE_URL } from '@/lib/siteLinks';
 
 const ArticlePage = () => {
   const { slug } = useParams();
   const article = slug ? getArticle(slug) : undefined;
+  const contentRef = useRef<HTMLDivElement>(null);
 
   usePageSeo({
     title: article?.metaTitle ?? 'Статья не найдена | ПаспортСервис',
@@ -27,11 +31,12 @@ const ArticlePage = () => {
   const sameTopic = rest.filter((a) => a.relatedPromo === article.relatedPromo);
   const others = [...sameTopic, ...rest.filter((a) => a.relatedPromo !== article.relatedPromo)].slice(
     0,
-    2,
+    3,
   );
 
   const articleUrl = `${SITE_URL}/articles/${article.slug}`;
   const promo = PROMO_PAGES[article.relatedPromo];
+  const isoDate = parseRussianDateToISO(article.date);
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,9 +49,20 @@ const ArticlePage = () => {
             '@type': 'Article',
             headline: article.title,
             description: article.metaDescription,
-            author: { '@type': 'Organization', name: 'ПаспортСервис' },
-            publisher: { '@type': 'Organization', name: 'ПаспортСервис' },
+            author: {
+              '@type': 'Organization',
+              name: 'ПаспортСервис',
+              url: `${SITE_URL}/`,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'ПаспортСервис',
+              logo: { '@type': 'ImageObject', url: 'https://cdn.poehali.dev/intertnal/img/og.png' },
+            },
             mainEntityOfPage: articleUrl,
+            ...(isoDate ? { datePublished: isoDate, dateModified: isoDate } : {}),
+            articleSection: promo.cardTitle,
+            inLanguage: 'ru-RU',
           },
           {
             '@context': 'https://schema.org',
@@ -88,7 +104,13 @@ const ArticlePage = () => {
             {article.title}
           </h1>
           <ArticleIllustration variant={article.illustration} className="mt-8 shadow-sm" />
-          <div className="article-content mt-8 space-y-5 text-lg leading-relaxed text-foreground/85">
+
+          <ArticleTableOfContents containerRef={contentRef} watch={article.slug} />
+
+          <div
+            ref={contentRef}
+            className="article-content mt-8 space-y-5 text-lg leading-relaxed text-foreground/85"
+          >
             {article.content}
           </div>
 
@@ -101,13 +123,29 @@ const ArticlePage = () => {
               <Link to={promo.path}>{promo.cardTitle}</Link>
             </Button>
           </div>
+
+          <div className="mt-8 flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary">
+              <Icon name="ShieldCheck" size={22} />
+            </div>
+            <div>
+              <p className="font-display text-base font-semibold text-primary">
+                Материал подготовлен специалистами ПаспортСервис
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Мы ежедневно сопровождаем оформление загранпаспортов через МФЦ и делимся только
+                проверенной на практике информацией, актуальной на {article.date.split(' ').pop()}{' '}
+                год.
+              </p>
+            </div>
+          </div>
         </div>
       </article>
 
       <section className="border-t border-border py-12 md:py-16">
         <div className="container max-w-4xl">
           <h2 className="font-display text-2xl font-bold text-primary">Читайте также</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((a) => (
               <Link
                 key={a.slug}
