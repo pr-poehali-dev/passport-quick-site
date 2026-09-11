@@ -25,6 +25,26 @@ const PAGE_DESC =
   'Помощь в оформлении загранпаспорта в Москве без московской прописки и регистрации. По регламенту МВД для иногородних — 3 месяца, мы помогаем сделать быстрее. Цены как для всех.';
 const PAGE_KEYWORDS =
   'загранпаспорт без прописки москва, загранпаспорт без регистрации москва, загранпаспорт иногородним в москве, загранпаспорт не по месту прописки москва';
+const HERO_IMG =
+  'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/files/173a6c66-c252-4a30-85c0-f265f349999e.jpg';
+
+const situations = [
+  {
+    icon: 'Briefcase',
+    title: 'Работаете в Москве, прописаны в другом городе',
+    desc: 'Постоянно живёте и работаете в столице, а постоянная регистрация осталась в регионе? Подать документы на загранпаспорт можно прямо в Москве, без поездки домой.',
+  },
+  {
+    icon: 'House',
+    title: 'Снимаете квартиру без временной регистрации',
+    desc: 'Временная регистрация не обязательна для подачи документов — оформить загранпаспорт в Москве можно и без неё, по месту фактического пребывания.',
+  },
+  {
+    icon: 'GraduationCap',
+    title: 'Студент в общежитии',
+    desc: 'Учитесь в московском вузе и живёте в общежитии? Мы поможем оформить загранпаспорт в Москве, даже если постоянная прописка в другом регионе.',
+  },
+];
 
 const faq = [
   {
@@ -42,6 +62,22 @@ const faq = [
   {
     q: 'Дороже ли стоит оформление для иногородних?',
     a: 'Нет. Стоимость для людей без московской прописки такая же, как для всех взрослых. Никаких наценок за иногороднюю регистрацию нет, а все пошлины, сборы, анкеты, копии и фото уже включены в цену.',
+  },
+  {
+    q: 'Нужна ли временная регистрация для подачи документов в Москве?',
+    a: 'Нет, временная регистрация не обязательна. Подать документы на загранпаспорт в Москве можно и без неё — по месту фактического пребывания.',
+  },
+  {
+    q: 'В какое подразделение МФЦ подавать документы без прописки?',
+    a: 'Обратиться можно в любое подразделение МФЦ Москвы, оказывающее услуги по загранпаспортам, независимо от места вашей постоянной регистрации. Мы подскажем удобный вариант и запишем на подачу.',
+  },
+  {
+    q: 'Можно ли оформить загранпаспорт в Москве студенту из другого региона?',
+    a: 'Да, студенты московских вузов могут подать документы на загранпаспорт в Москве, даже если постоянная прописка осталась в родном регионе и нет временной регистрации по месту учёбы.',
+  },
+  {
+    q: 'Что если постоянная прописка в другом городе, а нужен паспорт очень срочно?',
+    a: 'Мы предлагаем несколько тарифов, включая срочные — от 4 рабочих дней. Это значительно быстрее регламентных 3 месяцев для иногородних, и стоимость не отличается от цены для москвичей.',
   },
 ];
 
@@ -97,6 +133,7 @@ const WithoutRegistration = () => {
     description: PAGE_DESC,
     keywords: PAGE_KEYWORDS,
     path: '/zagranpasport-bez-propiski-moskva',
+    image: HERO_IMG,
   });
 
   return (
@@ -116,52 +153,64 @@ const WithoutRegistration = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="container relative py-14 md:py-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
-            <Icon name="MapPinOff" size={16} /> Для иногородних в Москве
-          </span>
-          <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
-            Загранпаспорт без прописки и регистрации в Москве
-          </h1>
-          <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
-            <span className="text-sm text-primary-foreground/70">Стоимость</span>
-            <span className="font-display text-2xl font-bold text-accent md:text-3xl">
-              от 26 000 ₽
+        <div className="container relative grid gap-10 py-14 md:py-20 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
+              <Icon name="MapPinOff" size={16} /> Для иногородних в Москве
             </span>
-            <span className="hidden text-sm text-primary-foreground/70 sm:inline">
-              · от 4 рабочих дней
-            </span>
+            <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
+              Загранпаспорт без прописки и регистрации в Москве
+            </h1>
+            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+              <span className="text-sm text-primary-foreground/70">Стоимость</span>
+              <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+                от 26 000 ₽
+              </span>
+              <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+                · от 4 рабочих дней
+              </span>
+            </div>
+            <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
+              Прописаны в регионе, а подаёте документы в Москве? По регламенту МВД для иногородних
+              оформление занимает до 3 месяцев. Мы помогаем взрослым получить загранпаспорт
+              значительно быстрее — а цены остаются такими же, как для всех.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
+              >
+                <Icon name="MessageCircle" size={22} /> WhatsApp
+              </a>
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
+              >
+                <Icon name="Send" size={22} /> Telegram
+              </a>
+              <a
+                href={MAX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#6B5CFF] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
+              >
+                <MaxIcon size={22} mono /> MAX
+              </a>
+            </div>
           </div>
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
-            Прописаны в регионе, а подаёте документы в Москве? По регламенту МВД для иногородних
-            оформление занимает до 3 месяцев. Мы помогаем взрослым получить загранпаспорт
-            значительно быстрее — а цены остаются такими же, как для всех.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
-            >
-              <Icon name="MessageCircle" size={22} /> WhatsApp
-            </a>
-            <a
-              href={TELEGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
-            >
-              <Icon name="Send" size={22} /> Telegram
-            </a>
-            <a
-              href={MAX_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#6B5CFF] px-6 py-3 font-display text-lg font-semibold text-white transition-transform hover:scale-105"
-            >
-              <MaxIcon size={22} mono /> MAX
-            </a>
+          <div>
+            <img
+              src={HERO_IMG}
+              alt="Оформление загранпаспорта без прописки в Москве — консультация в МФЦ"
+              className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
+              loading="eager"
+              width="600"
+              height="450"
+            />
           </div>
         </div>
       </section>
@@ -263,8 +312,34 @@ const WithoutRegistration = () => {
         </div>
       </section>
 
-      {/* Documents */}
+      {/* Typical situations */}
       <section className="bg-secondary py-14 md:py-20">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Кому подходит</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Типичные ситуации без московской прописки
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Если вы узнали себя в одной из ситуаций — мы поможем оформить загранпаспорт в Москве.
+            </p>
+          </header>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {situations.map((s) => (
+              <div key={s.title} className="rounded-2xl border border-border bg-card p-7">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                  <Icon name={s.icon} size={22} />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold text-primary">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documents */}
+      <section className="py-14 md:py-20">
         <div className="container max-w-3xl">
           <header className="text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Документы</p>
@@ -291,6 +366,30 @@ const WithoutRegistration = () => {
             <Button asChild variant="outline" className="border-primary/20 text-primary">
               <Link to="/#prices">Все услуги и цены</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust / expertise */}
+      <section className="bg-secondary py-14 md:py-20">
+        <div className="container max-w-3xl">
+          <header className="text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Почему нам доверяют</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Опыт работы с иногородними заявителями
+            </h2>
+          </header>
+          <div className="mt-8 space-y-4 text-lg leading-relaxed text-foreground/85">
+            <p>
+              Мы регулярно помогаем взрослым, которые живут и работают в Москве, но прописаны в
+              другом регионе, — знаем все нюансы регламента МВД и как законно ускорить процесс,
+              не дожидаясь стандартных 3 месяцев.
+            </p>
+            <p>
+              Перед подачей лично проверяем каждый документ, чтобы исключить отказ из-за формальных
+              ошибок. Работаем официально, по договору, с полной предоплатой и ценой без скрытых
+              наценок за отсутствие московской регистрации.
+            </p>
           </div>
         </div>
       </section>
@@ -348,6 +447,7 @@ const WithoutRegistration = () => {
             provider: { '@type': 'Organization', name: 'ПаспортСервис' },
             areaServed: { '@type': 'City', name: 'Москва' },
             description: PAGE_DESC,
+            image: HERO_IMG,
             offers: { '@type': 'Offer', priceCurrency: 'RUB', price: '26000' },
           },
           {
@@ -358,6 +458,36 @@ const WithoutRegistration = () => {
               name: f.q,
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'Как оформить загранпаспорт в Москве без прописки',
+            description:
+              'Пошаговый порядок оформления загранпаспорта в Москве без московской прописки с нашей помощью.',
+            totalTime: 'P4D',
+            step: [
+              {
+                '@type': 'HowToStep',
+                name: 'Консультация и выбор тарифа',
+                text: 'Пишете нам в мессенджер, рассказываете о ситуации — подбираем подходящий срок и тариф.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Сбор документов',
+                text: 'Готовим и проверяем полный пакет документов: паспорт, фото, сведения о трудовой деятельности.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Запись и подача в МФЦ Москвы',
+                text: 'Записываем в подходящее подразделение МФЦ Москвы и сопровождаем при подаче документов.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Получение готового паспорта',
+                text: 'Забираете готовый загранпаспорт в том же МФЦ, где подавали документы — без поездки в регион прописки.',
+              },
+            ],
           },
         ]}
       />
