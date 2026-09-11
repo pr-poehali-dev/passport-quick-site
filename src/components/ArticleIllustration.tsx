@@ -12,7 +12,10 @@ export type IllustrationKey =
   | 'nameChange'
   | 'delayFactors'
   | 'statusCheck'
-  | 'lostPassport';
+  | 'lostPassport'
+  | 'ipDocs'
+  | 'errorFix'
+  | 'earlyRenew';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -315,6 +318,71 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <line x1="278" y1="118" x2="332" y2="118" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
             <circle cx="335" cy="140" r="18" fill={accent} />
             <path d="M326 140 l6 6 11 -13" stroke="hsl(var(--accent-foreground))" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'ipDocs':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* briefcase */}
+            <rect x="70" y="75" width="140" height="90" rx="10" fill={primary} />
+            <rect x="115" y="55" width="50" height="28" rx="6" fill="none" stroke={primary} strokeWidth="7" />
+            <line x1="70" y1="108" x2="210" y2="108" stroke="white" strokeWidth="4" opacity="0.5" />
+            <rect x="126" y="98" width="28" height="20" rx="3" fill={accent} />
+            {/* passport */}
+            <rect x="250" y="35" width="100" height="120" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <circle cx="300" cy="72" r="15" fill={soft} />
+            <line x1="270" y1="102" x2="330" y2="102" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="270" y1="118" x2="315" y2="118" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="270" y1="134" x2="330" y2="134" stroke={soft} strokeWidth="8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'errorFix':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* document with error */}
+            <rect x="60" y="35" width="115" height="115" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <line x1="78" y1="60" x2="155" y2="60" stroke={line} strokeWidth="4" strokeLinecap="round" />
+            <line x1="78" y1="78" x2="140" y2="78" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <line x1="78" y1="100" x2="155" y2="100" stroke={soft} strokeWidth="8" strokeLinecap="round" />
+            <circle cx="150" cy="130" r="18" fill="none" stroke={accent} strokeWidth="5" />
+            <line x1="142" y1="122" x2="158" y2="138" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <line x1="158" y1="122" x2="142" y2="138" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            {/* arrow */}
+            <path d="M195 92 h40" stroke={primary} strokeWidth="5" strokeLinecap="round" />
+            <path d="M225 78 l16 14 -16 14" stroke={primary} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* fixed document */}
+            <rect x="255" y="35" width="115" height="115" rx="8" fill={primary} />
+            <line x1="273" y1="60" x2="350" y2="60" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+            <line x1="273" y1="78" x2="335" y2="78" stroke={accent} strokeWidth="5" strokeLinecap="round" />
+            <line x1="273" y1="100" x2="350" y2="100" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.6" />
+            <circle cx="345" cy="130" r="18" fill={accent} />
+            <path d="M336 130 l6 6 11 -13" stroke="hsl(var(--accent-foreground))" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'earlyRenew':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            {/* passport with filled pages */}
+            <rect x="65" y="30" width="110" height="120" rx="8" fill="white" stroke={line} strokeWidth="2" />
+            <line x1="83" y1="55" x2="157" y2="55" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+            <line x1="83" y1="70" x2="157" y2="70" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+            <line x1="83" y1="85" x2="157" y2="85" stroke={accent} strokeWidth="6" strokeLinecap="round" />
+            <line x1="83" y1="100" x2="130" y2="100" stroke={line} strokeWidth="6" strokeLinecap="round" opacity="0.4" />
+            <text x="120" y="132" fontSize="13" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">мало мест</text>
+            {/* arrow */}
+            <path d="M195 90 h40" stroke={primary} strokeWidth="5" strokeLinecap="round" />
+            <path d="M225 76 l16 14 -16 14" stroke={primary} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* new passport */}
+            <rect x="255" y="30" width="110" height="120" rx="8" fill={primary} />
+            <circle cx="310" cy="70" r="16" fill={accent} opacity="0.9" />
+            <line x1="280" y1="102" x2="340" y2="102" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+            <line x1="280" y1="116" x2="340" y2="116" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
           </svg>
         );
     }
