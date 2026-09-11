@@ -23,6 +23,26 @@ const PAGE_DESC =
   'Помощь в срочном оформлении загранпаспорта ребёнку до 14 лет: биометрия на 10 лет и старый образец на 5 лет. Цены, сроки от 2 часов, список документов. Содействие через МФЦ.';
 const PAGE_KEYWORDS =
   'загранпаспорт ребёнку до 14 лет, детский загранпаспорт срочно, загранпаспорт ребёнку через МФЦ, оформить загранпаспорт ребёнку, биометрический паспорт ребёнку';
+const HERO_IMG =
+  'https://cdn.poehali.dev/projects/712b1a0c-8e04-4992-bf7d-c6f361115898/files/82c29da2-2858-4fcc-b608-c51e9ae883a4.jpg';
+
+const ageGroups = [
+  {
+    age: '0–1 год',
+    title: 'Загранпаспорт новорождённому и грудничку',
+    desc: 'Собственный документ нужен с рождения — вписать младенца в паспорт родителя нельзя. Оптимален паспорт старого образца: оформляется быстрее и дешевле, пока внешность малыша быстро меняется.',
+  },
+  {
+    age: '1–6 лет',
+    title: 'Загранпаспорт дошкольнику',
+    desc: 'В этом возрасте черты лица ещё активно меняются, поэтому многие родители выбирают паспорт старого образца на 5 лет, чтобы не столкнуться с вопросами на границе из-за устаревшего фото.',
+  },
+  {
+    age: '6–14 лет',
+    title: 'Загранпаспорт школьнику',
+    desc: 'Ребёнок школьного возраста может присутствовать при подаче и хорошо позирует для биометрии. Для частых поездок на 10 лет вперёд удобнее оформить биометрический паспорт.',
+  },
+];
 
 const faq = [
   {
@@ -44,6 +64,22 @@ const faq = [
   {
     q: 'Входит ли госпошлина в стоимость для детей?',
     a: 'Для детей до 14 лет госпошлина оплачивается отдельно в МФЦ (3000 ₽ за биометрию или 1000 ₽ за старый образец). В нашу цену входят все сборы, заполнение анкет, ксерокопии и фотографии.',
+  },
+  {
+    q: 'Нужно ли присутствие ребёнка при подаче документов на загранпаспорт?',
+    a: 'Правила зависят от типа паспорта: для биометрического образца ребёнка нужно привезти лично для сканирования отпечатков пальцев (с 12 лет) и фотографирования. Для старого образца присутствие ребёнка не обязательно — фото уже готово и вклеивается в анкету.',
+  },
+  {
+    q: 'Можно ли оформить загранпаспорт ребёнку по свидетельству о рождении без штампа о гражданстве?',
+    a: 'Нет, без штампа о гражданстве заявление не примут, даже если у вас на руках только свидетельство о рождении. Штамп можно поставить одновременно с подачей документов на загранпаспорт или заранее в МВД.',
+  },
+  {
+    q: 'Что делать, если загранпаспорт ребёнка нужен очень срочно перед поездкой?',
+    a: 'Быстрее всего оформляется паспорт старого образца — от 2–3 часов при полном пакете документов. Мы заранее проверяем документы и записываем в удобное окно МФЦ, чтобы не терять время на исправление ошибок.',
+  },
+  {
+    q: 'Нужен ли загранпаспорт ребёнку, если он летит с одним из родителей?',
+    a: 'Да, независимо от того, летит ребёнок с одним родителем, двумя или с сопровождающим по доверенности — у него должен быть собственный действующий загранпаспорт для пересечения границы.',
   },
 ];
 
@@ -87,6 +123,7 @@ const ChildrenPassport = () => {
     description: PAGE_DESC,
     keywords: PAGE_KEYWORDS,
     path: '/deti-do-14-let',
+    image: HERO_IMG,
   });
 
   return (
@@ -107,43 +144,55 @@ const ChildrenPassport = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="container relative py-14 md:py-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
-            <Icon name="Baby" size={16} /> Дети до 14 лет
-          </span>
-          <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
-            Загранпаспорт ребёнку до 14 лет срочно
-          </h1>
-          <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
-            <span className="text-sm text-primary-foreground/70">Стоимость</span>
-            <span className="font-display text-2xl font-bold text-accent md:text-3xl">
-              от 20 000 ₽
+        <div className="container relative grid gap-10 py-14 md:py-20 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
+              <Icon name="Baby" size={16} /> Дети до 14 лет
             </span>
-            <span className="hidden text-sm text-primary-foreground/70 sm:inline">
-              · от 2–3 часов
-            </span>
+            <h1 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">
+              Загранпаспорт ребёнку до 14 лет срочно
+            </h1>
+            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+              <span className="text-sm text-primary-foreground/70">Стоимость</span>
+              <span className="font-display text-2xl font-bold text-accent md:text-3xl">
+                от 20 000 ₽
+              </span>
+              <span className="hidden text-sm text-primary-foreground/70 sm:inline">
+                · от 2–3 часов
+              </span>
+            </div>
+            <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
+              Оказываем помощь и содействие в срочном оформлении загранпаспорта для детей до 14 лет
+              через МФЦ. Два варианта на выбор: биометрический паспорт на 10 лет и паспорт старого
+              образца на 5 лет с оформлением от 2–3 часов.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button
+                size="lg"
+                className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
+                asChild
+              >
+                <a href="#child-prices">Цены и сроки</a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
+                asChild
+              >
+                <a href="#child-docs">Документы</a>
+              </Button>
+            </div>
           </div>
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/75">
-            Оказываем помощь и содействие в срочном оформлении загранпаспорта для детей до 14 лет
-            через МФЦ. Два варианта на выбор: биометрический паспорт на 10 лет и паспорт старого
-            образца на 5 лет с оформлением от 2–3 часов.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button
-              size="lg"
-              className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
-              asChild
-            >
-              <a href="#child-prices">Цены и сроки</a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
-              asChild
-            >
-              <a href="#child-docs">Документы</a>
-            </Button>
+          <div>
+            <img
+              src={HERO_IMG}
+              alt="Оформление загранпаспорта ребёнку до 14 лет — мама с дочкой и документами в аэропорту"
+              className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
+              loading="eager"
+              width="600"
+              height="450"
+            />
           </div>
         </div>
       </section>
@@ -266,7 +315,32 @@ const ChildrenPassport = () => {
         </div>
       </section>
 
-
+      {/* By age */}
+      <section className="bg-secondary py-14 md:py-20">
+        <div className="container">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">По возрастам</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Особенности оформления в разном возрасте
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Подход к выбору паспорта немного отличается для новорождённых, дошкольников и
+              школьников.
+            </p>
+          </header>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {ageGroups.map((g) => (
+              <div key={g.age} className="rounded-2xl border border-border bg-card p-7">
+                <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-sm font-semibold text-accent">
+                  {g.age}
+                </span>
+                <h3 className="mt-4 font-display text-lg font-semibold text-primary">{g.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{g.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Documents */}
       <section id="child-docs" className="bg-secondary py-14 md:py-20">
@@ -295,8 +369,33 @@ const ChildrenPassport = () => {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Trust / expertise */}
       <section className="py-14 md:py-20">
+        <div className="container max-w-3xl">
+          <header className="text-center">
+            <p className="font-semibold uppercase tracking-widest text-accent">Почему нам доверяют</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+              Опыт оформления детских загранпаспортов
+            </h2>
+          </header>
+          <div className="mt-8 space-y-4 text-lg leading-relaxed text-foreground/85">
+            <p>
+              Мы специализируемся на оформлении загранпаспортов, включая работу с документами детей
+              любого возраста — от новорождённых до подростков. Знаем нюансы, с которыми сталкиваются
+              родители: от штампа о гражданстве до выбора типа паспорта под конкретный возраст ребёнка
+              и планы на поездки.
+            </p>
+            <p>
+              Перед подачей мы лично проверяем каждый документ на соответствие требованиям МВД, чтобы
+              исключить отказ и повторные визиты в МФЦ. Работаем официально, по договору, с полной
+              предоплатой и прозрачной ценой без скрытых доплат.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-secondary py-14 md:py-20">
         <div className="container max-w-3xl">
           <header className="text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Вопросы и ответы</p>
@@ -348,6 +447,7 @@ const ChildrenPassport = () => {
             provider: { '@type': 'Organization', name: 'ПаспортСервис' },
             areaServed: 'RU',
             description: PAGE_DESC,
+            image: HERO_IMG,
             offers: { '@type': 'Offer', priceCurrency: 'RUB', price: '20000' },
           },
           {
@@ -358,6 +458,36 @@ const ChildrenPassport = () => {
               name: f.q,
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'Как оформить загранпаспорт ребёнку до 14 лет',
+            description:
+              'Пошаговый порядок оформления загранпаспорта ребёнку до 14 лет через МФЦ с нашей помощью.',
+            totalTime: 'P1D',
+            step: [
+              {
+                '@type': 'HowToStep',
+                name: 'Выбор типа паспорта',
+                text: 'Определитесь, какой паспорт нужен ребёнку: биометрический на 10 лет или старого образца на 5 лет.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Сбор документов',
+                text: 'Соберите свидетельство о рождении, штамп о гражданстве, паспорт родителя и фотографии по требованиям.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Запись и подача в МФЦ',
+                text: 'Мы записываем на удобное время и сопровождаем при подаче документов в МФЦ.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Получение готового паспорта',
+                text: 'Забираете готовый загранпаспорт ребёнка в том же МФЦ, где подавали документы.',
+              },
+            ],
           },
         ]}
       />
