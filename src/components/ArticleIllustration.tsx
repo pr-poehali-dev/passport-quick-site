@@ -15,7 +15,8 @@ export type IllustrationKey =
   | 'lostPassport'
   | 'ipDocs'
   | 'errorFix'
-  | 'earlyRenew';
+  | 'earlyRenew'
+  | 'urgentTrip';
 
 interface ArticleIllustrationProps {
   variant: IllustrationKey;
@@ -383,6 +384,21 @@ const ArticleIllustration = ({ variant, className = '' }: ArticleIllustrationPro
             <circle cx="310" cy="70" r="16" fill={accent} opacity="0.9" />
             <line x1="280" y1="102" x2="340" y2="102" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
             <line x1="280" y1="116" x2="340" y2="116" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+          </svg>
+        );
+      case 'urgentTrip':
+        return (
+          <svg viewBox="0 0 400 175" className={common} fill="none">
+            {grid}
+            <rect width="400" height="175" fill="url(#dots)" />
+            <line x1="55" y1="105" x2="345" y2="105" stroke={line} strokeWidth="4" strokeLinecap="round" strokeDasharray="2 10" />
+            <circle cx="70" cy="105" r="14" fill={accent} />
+            <circle cx="200" cy="105" r="10" fill="white" stroke={line} strokeWidth="3" />
+            <rect x="305" y="75" width="60" height="60" rx="10" fill={primary} />
+            <path d="M322 108 l30 -14 -6 22 -8 -4 -4 8 -4 -10 z" fill={accent} />
+            <text x="70" y="65" fontSize="15" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">подача</text>
+            <text x="200" y="65" fontSize="15" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">от 4 дней</text>
+            <text x="335" y="65" fontSize="15" fontWeight="700" fill={primary} textAnchor="middle" fontFamily="Oswald, sans-serif">поездка</text>
           </svg>
         );
     }

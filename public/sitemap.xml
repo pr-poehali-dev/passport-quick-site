@@ -106,6 +106,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/zagranpasport-vzroslomu-dokumenty</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/zagranpasport-na-5-ili-10-let-chto-vybrat-vzroslomu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/articles/srochnyy-zagranpasport-pered-poezdkoy-plan</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://xn--80aein1aebjbfdeh.xn--p1ai/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
