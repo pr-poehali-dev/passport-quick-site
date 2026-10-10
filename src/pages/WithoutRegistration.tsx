@@ -18,7 +18,7 @@ import MaxIcon from '@/components/MaxIcon';
 import usePageSeo from '@/hooks/usePageSeo';
 import { WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
-const PAGE_URL = 'https://паспортсервис.рф/zagranpasport-bez-propiski-moskva';
+const PAGE_URL = 'https://срочное-оформление-загранпаспорта.рф/zagranpasport-bez-propiski-moskva';
 const PAGE_TITLE =
   'Загранпаспорт без прописки и регистрации в Москве срочно | ПаспортСервис';
 const PAGE_DESC =
@@ -430,7 +430,7 @@ const WithoutRegistration = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Главная',
-                item: 'https://паспортсервис.рф/',
+                item: 'https://срочное-оформление-загранпаспорта.рф/',
               },
               {
                 '@type': 'ListItem',

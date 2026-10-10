@@ -13,7 +13,7 @@
  * 7. Якоря главной: #prices, #docs, #articles, #contacts.
  */
 
-export const SITE_URL = 'https://паспортсервис.рф';
+export const SITE_URL = 'https://срочное-оформление-загранпаспорта.рф';
 
 export type PromoKey = 'children' | 'noRegistration' | 'noMilitaryId';
 

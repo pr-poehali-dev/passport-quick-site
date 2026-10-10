@@ -16,7 +16,7 @@ import RelatedPromo from '@/components/RelatedPromo';
 import RelatedArticles from '@/components/RelatedArticles';
 import usePageSeo from '@/hooks/usePageSeo';
 
-const PAGE_URL = 'https://паспортсервис.рф/deti-do-14-let';
+const PAGE_URL = 'https://срочное-оформление-загранпаспорта.рф/deti-do-14-let';
 const PAGE_TITLE =
   'Загранпаспорт ребёнку до 14 лет срочно | Помощь в оформлении через МФЦ';
 const PAGE_DESC =
@@ -430,7 +430,7 @@ const ChildrenPassport = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Главная',
-                item: 'https://паспортсервис.рф/',
+                item: 'https://срочное-оформление-загранпаспорта.рф/',
               },
               {
                 '@type': 'ListItem',

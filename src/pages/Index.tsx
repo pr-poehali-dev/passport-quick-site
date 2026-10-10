@@ -181,7 +181,7 @@ const Index = () => {
             priceRange: 'от 20000 ₽',
             areaServed: 'RU',
             telephone: '+7 903 136-38-08',
-            url: 'https://паспортсервис.рф/',
+            url: 'https://срочное-оформление-загранпаспорта.рф/',
             image: HERO_IMG,
           },
           {
