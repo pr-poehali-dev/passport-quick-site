@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/contacts';
@@ -16,14 +16,21 @@ const isRoute = (href: string) => href.startsWith('/') && !href.includes('#');
 const SiteHeader = () => {
   const [menu, setMenu] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = menu ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menu]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 items-center justify-between sm:h-16">
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
             <Icon name="Plane" size={20} className="text-accent" />
           </div>
-          <span className="font-display text-xl font-bold text-primary">ПаспортСервис</span>
+          <span className="font-display text-lg font-bold text-primary sm:text-xl">ПаспортСервис</span>
         </Link>
         <nav className="hidden items-center gap-6 xl:flex">
           {nav.map((n) =>
@@ -54,34 +61,56 @@ const SiteHeader = () => {
             {PHONE_DISPLAY}
           </a>
         </div>
-        <button className="xl:hidden" onClick={() => setMenu(!menu)} aria-label="Меню">
-          <Icon name={menu ? 'X' : 'Menu'} size={26} className="text-primary" />
-        </button>
+        <div className="flex items-center gap-2 xl:hidden">
+          <a
+            href={`tel:${PHONE_TEL}`}
+            aria-label="Позвонить"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground sm:hidden"
+          >
+            <Icon name="Phone" size={18} />
+          </a>
+          <button
+            onClick={() => setMenu(!menu)}
+            aria-label={menu ? 'Закрыть меню' : 'Открыть меню'}
+            aria-expanded={menu}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary"
+          >
+            <Icon name={menu ? 'X' : 'Menu'} size={22} className="text-primary" />
+          </button>
+        </div>
       </div>
       {menu && (
-        <nav className="border-t border-border bg-background px-4 py-4 xl:hidden">
-          {nav.map((n) =>
-            isRoute(n.href) ? (
-              <Link
-                key={n.href}
-                to={n.href}
-                onClick={() => setMenu(false)}
-                className="block py-2.5 font-medium text-foreground/80"
-              >
-                {n.label}
-              </Link>
-            ) : (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setMenu(false)}
-                className="block py-2.5 font-medium text-foreground/80"
-              >
-                {n.label}
-              </a>
-            ),
-          )}
-          <a href={`tel:${PHONE_TEL}`} className="mt-2 block font-semibold text-primary">
+        <nav className="fixed inset-x-0 bottom-0 top-14 z-40 overflow-y-auto border-t border-border bg-background px-4 pb-8 pt-3 sm:top-16 xl:hidden">
+          <ul className="divide-y divide-border">
+            {nav.map((n) => {
+              const cls =
+                'flex min-h-[52px] items-center justify-between font-medium text-foreground active:text-accent';
+              const inner = (
+                <>
+                  {n.label}
+                  <Icon name="ChevronRight" size={18} className="text-muted-foreground" />
+                </>
+              );
+              return (
+                <li key={n.href}>
+                  {isRoute(n.href) ? (
+                    <Link to={n.href} onClick={() => setMenu(false)} className={cls}>
+                      {inner}
+                    </Link>
+                  ) : (
+                    <a href={n.href} onClick={() => setMenu(false)} className={cls}>
+                      {inner}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="mt-6 flex h-14 items-center justify-center gap-2 rounded-xl bg-accent font-display text-lg font-semibold text-accent-foreground"
+          >
+            <Icon name="Phone" size={20} />
             {PHONE_DISPLAY}
           </a>
         </nav>

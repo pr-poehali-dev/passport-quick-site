@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import FloatingMessengers from "@/components/FloatingMessengers";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import MobileActionBar from "@/components/MobileActionBar";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingMessengers />
+        <MobileActionBar />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>

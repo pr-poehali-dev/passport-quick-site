@@ -229,15 +229,15 @@ const Index = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="container relative grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
+        <div className="container relative grid gap-8 py-10 sm:py-14 md:py-24 lg:grid-cols-2 lg:items-center lg:gap-10">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-sm font-medium text-accent">
               <Icon name="Zap" size={16} /> Срочно — от 4 рабочих дней
             </span>
-            <h1 className="mt-5 font-display text-4xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-4 font-display text-[2rem] font-bold leading-[1.15] sm:text-4xl md:mt-5 md:text-6xl">
               Помощь в оформлении загранпаспорта
             </h1>
-            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-5 py-3">
+            <div className="mt-5 inline-flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/15 px-4 py-2.5 sm:mt-6 sm:px-5 sm:py-3">
               <span className="text-sm text-primary-foreground/70">Стоимость</span>
               <span className="font-display text-2xl font-bold text-accent md:text-3xl">
                 от 20 000 ₽
@@ -246,12 +246,12 @@ const Index = () => {
                 · всё включено
               </span>
             </div>
-            <p className="mt-5 max-w-lg text-lg text-primary-foreground/75">
+            <p className="mt-5 max-w-lg text-base text-primary-foreground/75 sm:text-lg">
               Оказываем содействие в оформлении загранпаспорта через МФЦ для взрослых и детей — от 4
               рабочих дней. Цена окончательная: все пошлины, налоги и сборы, заполнение анкет,
               ксерокопии и фотографии уже включены.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:gap-4">
               <Button
                 size="lg"
                 className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
@@ -268,7 +268,7 @@ const Index = () => {
                 <a href="#services">Наши услуги</a>
               </Button>
             </div>
-            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
+            <dl className="mt-8 grid max-w-lg grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
               {[
                 { v: 'от 4', l: 'рабочих дней' },
                 { v: 'всё', l: 'включено' },
@@ -276,7 +276,7 @@ const Index = () => {
               ].map((s) => (
                 <div
                   key={s.l}
-                  className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-3 py-4 text-center"
+                  className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-2 py-3 text-center sm:px-3 sm:py-4"
                 >
                   <dt className="font-display text-xl font-bold text-accent md:text-2xl">{s.v}</dt>
                   <dd className="mt-1 text-xs text-primary-foreground/70">{s.l}</dd>
@@ -288,7 +288,7 @@ const Index = () => {
             <img
               src={HERO_IMG}
               alt="Помощь в оформлении загранпаспорта РФ через МФЦ"
-              className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
+              className="mx-auto w-full max-w-xs rounded-2xl shadow-2xl sm:max-w-md"
               loading="eager"
             />
           </div>
@@ -296,7 +296,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-16 md:py-24">
+      <section id="services" className="py-12 md:py-24">
         <div className="container">
           <header className="mx-auto max-w-2xl text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Услуги</p>
@@ -307,11 +307,11 @@ const Index = () => {
               Оказываем содействие в оформлении для взрослых и детей. Точные цены — в таблице ниже.
             </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
             {services.map((s) => (
               <article
                 key={s.title}
-                className="group rounded-2xl border border-border bg-card p-7 transition-all hover:border-accent/40 hover:shadow-lg"
+                className="group rounded-2xl border border-border bg-card p-5 transition-all hover:border-accent/40 hover:shadow-lg md:p-7"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5 text-primary transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                   <Icon name={s.icon} size={24} />
@@ -326,7 +326,7 @@ const Index = () => {
       </section>
 
       {/* Prices */}
-      <section id="prices" className="bg-secondary py-16 md:py-24">
+      <section id="prices" className="bg-secondary py-12 md:py-24">
         <div className="container">
           <header className="mx-auto max-w-2xl text-center">
             <p className="font-semibold uppercase tracking-widest text-accent">Цены и сроки</p>
@@ -464,7 +464,7 @@ const Index = () => {
               От предварительной записи до готового паспорта в ваших руках.
             </p>
           </header>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
             {steps.map((s) => (
               <div key={s.n} className="relative rounded-2xl bg-card p-7">
                 <span className="font-display text-5xl font-bold text-accent/25">{s.n}</span>

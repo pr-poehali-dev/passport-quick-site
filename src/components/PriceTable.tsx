@@ -12,7 +12,7 @@ interface PriceTableProps {
 const PriceTable = ({ title, note, rows, highlightFirst }: PriceTableProps) => {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card">
-      <div className="border-b border-border bg-secondary px-6 py-4">
+      <div className="border-b border-border bg-secondary px-4 py-4 sm:px-6">
         <h3 className="font-display text-lg font-semibold text-primary">{title}</h3>
         {note && (
           <p className="mt-1 flex items-start gap-2 text-xs text-muted-foreground">
@@ -24,8 +24,8 @@ const PriceTable = ({ title, note, rows, highlightFirst }: PriceTableProps) => {
       <table className="w-full">
         <thead>
           <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
-            <th className="px-6 py-3 font-medium">Срок оформления</th>
-            <th className="px-6 py-3 text-right font-medium">Стоимость</th>
+            <th className="px-4 py-3 font-medium sm:px-6">Срок оформления</th>
+            <th className="px-4 py-3 text-right font-medium sm:px-6">Стоимость</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@ const PriceTable = ({ title, note, rows, highlightFirst }: PriceTableProps) => {
                 highlightFirst && i === 0 ? 'bg-accent/5' : ''
               }`}
             >
-              <td className="px-6 py-4">
+              <td className="px-4 py-3.5 sm:px-6 sm:py-4">
                 <span className="flex items-center gap-2 font-medium text-foreground">
                   {highlightFirst && i === 0 && (
                     <Icon name="Zap" size={16} className="text-accent" />
@@ -44,7 +44,7 @@ const PriceTable = ({ title, note, rows, highlightFirst }: PriceTableProps) => {
                   {r.term}
                 </span>
               </td>
-              <td className="px-6 py-4 text-right font-display text-lg font-semibold text-primary">
+              <td className="whitespace-nowrap px-4 py-3.5 text-right font-display text-base font-semibold text-primary sm:px-6 sm:py-4 sm:text-lg">
                 {r.price}
               </td>
             </tr>

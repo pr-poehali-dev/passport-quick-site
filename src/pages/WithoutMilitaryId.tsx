@@ -121,7 +121,7 @@ const WithoutMilitaryId = () => {
             Поможем оформить загранпаспорт без обязательного требования документов из военкомата.
             Действуем строго в рамках закона, только официально и без рисков для заявителя.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-7 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:gap-4">
             <a
               href={WHATSAPP_URL}
               target="_blank"

@@ -175,7 +175,7 @@ const WithoutRegistration = () => {
               оформление занимает до 3 месяцев. Мы помогаем взрослым получить загранпаспорт
               значительно быстрее — а цены остаются такими же, как для всех.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:gap-4">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -206,7 +206,7 @@ const WithoutRegistration = () => {
             <img
               src={HERO_IMG}
               alt="Оформление загранпаспорта без прописки в Москве — консультация в МФЦ"
-              className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
+              className="mx-auto w-full max-w-xs rounded-2xl shadow-2xl sm:max-w-md"
               loading="eager"
               width="600"
               height="450"

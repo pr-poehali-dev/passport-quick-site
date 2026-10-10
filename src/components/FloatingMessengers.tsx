@@ -4,7 +4,7 @@ import { WHATSAPP_URL, TELEGRAM_URL, MAX_URL } from '@/lib/contacts';
 
 const FloatingMessengers = () => {
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-5 right-5 z-50 hidden flex-col gap-3 md:flex">
       <a
         href={WHATSAPP_URL}
         target="_blank"

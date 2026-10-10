@@ -166,7 +166,7 @@ const ChildrenPassport = () => {
               через МФЦ. Два варианта на выбор: биометрический паспорт на 10 лет и паспорт старого
               образца на 5 лет с оформлением от 2–3 часов.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:gap-4">
               <Button
                 size="lg"
                 className="bg-accent font-semibold text-accent-foreground hover:bg-accent/90"
@@ -188,7 +188,7 @@ const ChildrenPassport = () => {
             <img
               src={HERO_IMG}
               alt="Оформление загранпаспорта ребёнку до 14 лет — мама с дочкой и документами в аэропорту"
-              className="mx-auto w-full max-w-md rounded-2xl shadow-2xl"
+              className="mx-auto w-full max-w-xs rounded-2xl shadow-2xl sm:max-w-md"
               loading="eager"
               width="600"
               height="450"
