@@ -11,6 +11,8 @@ const nav = [
   { label: 'Контакты', href: '/#contacts' },
 ];
 
+const COST_HREF = '/#contacts';
+
 const isRoute = (href: string) => href.startsWith('/') && !href.includes('#');
 
 const SiteHeader = () => {
@@ -60,8 +62,20 @@ const SiteHeader = () => {
           >
             {PHONE_DISPLAY}
           </a>
+          <a
+            href={COST_HREF}
+            className="rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+          >
+            Узнать стоимость
+          </a>
         </div>
         <div className="flex items-center gap-2 xl:hidden">
+          <a
+            href={COST_HREF}
+            className="hidden h-10 items-center rounded-xl bg-accent px-4 text-sm font-semibold text-accent-foreground sm:flex"
+          >
+            Узнать стоимость
+          </a>
           <a
             href={`tel:${PHONE_TEL}`}
             aria-label="Позвонить"
@@ -107,8 +121,16 @@ const SiteHeader = () => {
             })}
           </ul>
           <a
-            href={`tel:${PHONE_TEL}`}
+            href={COST_HREF}
+            onClick={() => setMenu(false)}
             className="mt-6 flex h-14 items-center justify-center gap-2 rounded-xl bg-accent font-display text-lg font-semibold text-accent-foreground"
+          >
+            <Icon name="MessageCircle" size={20} />
+            Узнать стоимость
+          </a>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="mt-3 flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-primary font-display text-lg font-semibold text-primary"
           >
             <Icon name="Phone" size={20} />
             {PHONE_DISPLAY}
