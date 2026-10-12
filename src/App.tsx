@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import FloatingMessengers from "@/components/FloatingMessengers";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import CanonicalRedirect from "@/components/CanonicalRedirect";
 import MobileActionBar from "@/components/MobileActionBar";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <CanonicalRedirect />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/deti-do-14-let" element={<ChildrenPassport />} />

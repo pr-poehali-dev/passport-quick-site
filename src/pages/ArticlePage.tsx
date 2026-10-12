@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import SiteHeader from '@/components/SiteHeader';
@@ -12,6 +12,7 @@ import usePageSeo from '@/hooks/usePageSeo';
 import { parseRussianDateToISO } from '@/lib/dateUtils';
 import { getArticle, articles } from '@/data/articles';
 import { PROMO_PAGES, SITE_URL } from '@/lib/siteLinks';
+import NotFound from '@/pages/NotFound';
 
 const ArticlePage = () => {
   const { slug } = useParams();
@@ -23,9 +24,10 @@ const ArticlePage = () => {
     description: article?.metaDescription ?? '',
     keywords: article?.keywords,
     path: slug ? `/articles/${slug}` : undefined,
+    noindex: !article,
   });
 
-  if (!article) return <Navigate to="/" replace />;
+  if (!article) return <NotFound />;
 
   const rest = articles.filter((a) => a.slug !== article.slug);
   const sameTopic = rest.filter((a) => a.relatedPromo === article.relatedPromo);

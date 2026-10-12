@@ -1,3 +1,7 @@
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&ysclid&gclid&fbclid&roistat&from
+
 User-agent: Googlebot
 Allow: /
 
@@ -8,9 +12,6 @@ User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Yandex
 Allow: /
 
 User-agent: *

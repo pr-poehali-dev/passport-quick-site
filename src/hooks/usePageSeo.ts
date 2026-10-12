@@ -51,15 +51,22 @@ const usePageSeo = ({ title, description, keywords, path, image, noindex }: Page
     setMetaByName('description', description);
     if (keywords) setMetaByName('keywords', keywords);
 
-    const url = `${SITE_URL}${path ?? window.location.pathname}`;
+    const rawPath = (path ?? window.location.pathname).split(/[?#]/)[0].toLowerCase();
+    const cleanPath = rawPath.length > 1 ? rawPath.replace(/\/+$/, '') : '/';
+    const url = cleanPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${cleanPath}`;
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+      if (!noindex) document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', url);
+    if (noindex) {
+      canonical.remove();
+    } else {
+      canonical.setAttribute('href', url);
+      if (!canonical.isConnected) document.head.appendChild(canonical);
+    }
 
     setMetaByProperty('og:title', title);
     setMetaByProperty('og:description', description);
