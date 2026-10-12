@@ -3,8 +3,9 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import JsonLd from '@/components/JsonLd';
 import usePageSeo from '@/hooks/usePageSeo';
-import { visiblePromoPages } from '@/lib/siteLinks';
+import { SITE_URL, visiblePromoPages } from '@/lib/siteLinks';
 
 const NotFound = () => {
   usePageSeo({
@@ -22,6 +23,25 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Главная', item: `${SITE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Страница не найдена' },
+          ],
+        }}
+      />
+      <nav aria-label="Хлебные крошки" className="border-b border-border bg-secondary/50">
+        <div className="container flex flex-wrap items-center gap-2 py-3 text-sm text-muted-foreground">
+          <Link to="/" className="hover:text-accent">
+            Главная
+          </Link>
+          <Icon name="ChevronRight" size={14} />
+          <span className="text-foreground">Страница не найдена</span>
+        </div>
+      </nav>
       <main className="flex flex-1 items-center py-16">
         <div className="container max-w-2xl text-center">
           <p className="font-display text-7xl font-bold text-accent md:text-8xl">404</p>
