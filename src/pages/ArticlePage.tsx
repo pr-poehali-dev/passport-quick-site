@@ -8,6 +8,7 @@ import SiteFooter from '@/components/SiteFooter';
 import JsonLd from '@/components/JsonLd';
 import ArticleIllustration from '@/components/ArticleIllustration';
 import ArticleTableOfContents from '@/components/ArticleTableOfContents';
+import ArticleFaq from '@/components/ArticleFaq';
 import usePageSeo from '@/hooks/usePageSeo';
 import { parseRussianDateToISO } from '@/lib/dateUtils';
 import { getArticle, articles } from '@/data/articles';
@@ -75,6 +76,19 @@ const ArticlePage = () => {
               { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
             ],
           },
+          ...(article.faq?.length
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: article.faq.map((f) => ({
+                    '@type': 'Question',
+                    name: f.q,
+                    acceptedAnswer: { '@type': 'Answer', text: f.a },
+                  })),
+                },
+              ]
+            : []),
         ]}
       />
 
@@ -115,6 +129,8 @@ const ArticlePage = () => {
           >
             {article.content}
           </div>
+
+          {article.faq && <ArticleFaq items={article.faq} />}
 
           <div className="mt-10 rounded-2xl border-2 border-accent/40 bg-accent/5 p-6 text-center">
             <p className="font-display text-lg font-semibold text-primary">{promo.cardTitle}?</p>
